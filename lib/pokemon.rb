@@ -1,6 +1,10 @@
 require "pokedex/version"
 
-module Pokedex
-  class Error < StandardError; end
-  # Your code goes here...
+class Pokemon
+  attr_reader :name, :type, :entry, :weight, :height, :generation, :stats, :evolution, :gender
+  
+  def initialize(info_hash)
+    info_hash.each {|key, value| self.send("#{key}=", value)}
+  end
+    
 end
