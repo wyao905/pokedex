@@ -10,21 +10,21 @@ class Scraper
     
     test_type = page.css("table.roundy td.roundy table.roundy table a span b")
     if test_type[1] != "Unknown"
-      type = [test_type[0].text.strip, test_type[1].text.strip]
+      types = [test_type[0].text.strip, test_type[1].text.strip]
     else
-      type = test_type[0].text.strip
+      types = test_type[0].text.strip
     end
     
     pokemon_entry_hash = {:name => page.css(".roundy big b").text.strip,
                           :category => page.css("table.roundy table.roundy td.roundy table a span").text.strip,
-                          :type => type,
+                          :types => types,
                           :entry => page.css("table.roundy table.roundy td.roundybottom table.roundy td.roundy").first.text.strip,
-                          :weight => "",
-                          :height => "",
-                          :generation => "",
-                          :stats => "",
-                          :evolution => "",
-                          :gender => ""}
+                          :weight => "some weight",
+                          :height => "some height",
+                          :generation => "1",
+                          :stats => "weak",
+                          :evolution => "yes",
+                          :gender => "50/50"}
   end
   
   # def generation
