@@ -21,7 +21,9 @@ class Pokemon
   
   def weakness
     list = []
+    multiplier = {}
     types.each {|type| list << Type.find(type).weak_to}
+    
       
     
   end
