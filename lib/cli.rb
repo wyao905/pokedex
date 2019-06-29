@@ -15,7 +15,7 @@ class CommandLineInterface
 
   def make_pokemon
     info_hash = Scraper.scrape_page(BASE_PATH + "Pikachu_(Pokémon)") #replace pikachu with interpolation
-    Student.create_from_collection(info_hash)
+    Student.create(info_hash)
   end
 
   def add_attributes_to_students
