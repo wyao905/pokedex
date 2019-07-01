@@ -8,21 +8,17 @@ class CommandLineInterface
   BASE_PATH = "https://bulbapedia.bulbagarden.net/wiki/"
 
   def run
-    make_pokemon
-    add_attributes_to_students
-    display_students
+    get_pokemon_info
+    display_pokemon_info
   end
 
-  def make_pokemon
+  def get_pokemon_info
     info_hash = Scraper.scrape_page(BASE_PATH + "Pikachu_(Pokémon)") #replace pikachu with interpolation
     Pokemon.create(info_hash)
   end
 
-  def add_attributes_to_students
-    Student.all.each do |student|
-      attributes = Scraper.scrape_profile_page(BASE_PATH + student.profile_url)
-      student.add_student_attributes(attributes)
-    end
+  def display_pokemon_info
+    
   end
 
   def display_students

@@ -1,2 +1,3 @@
 class Type
+  @@all = []
 end

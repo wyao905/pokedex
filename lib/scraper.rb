@@ -5,7 +5,7 @@ require 'pry'
 require_relative './course.rb'
 
 class Scraper
-  def scrape_page(pokemon_url) #scrapes the necessary pokedex info to be displayed for a single pokemon only
+  def self.scrape_page(pokemon_url) #scrapes the necessary pokedex info to be displayed for a single pokemon only
     page = Nokogiri::HTML(open(pokemon_url))
     
     test_type = page.css("table.roundy td.roundy table.roundy table a span b")
@@ -28,11 +28,8 @@ class Scraper
                           :entry => page.css("table.roundy table.roundy td.roundybottom table.roundy td.roundy").first.text.strip,
                           :weight => weight,
                           :height => height,
-                          :generation => "1",
                           :stats => "weak",
                           :evolution => "yes",
-                          :gender => page.css("#bodyContent #mw-content-text table.roundy")[5].text.strip.split("\n").pop().strip
+                          :gender => page.css("#bodyContent #mw-content-text table.roundy")[5].text.strip.split("\n").pop().strip}
   end
-  
-  def scrape_generation(pokemon_url)
 end

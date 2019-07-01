@@ -12,11 +12,8 @@ class Pokemon
               :evolution,   #both pre and after
               :gender       #ratio split m/f
   
-  @@generations = Array.new(7, [])
-  
   def initialize(info_hash)
     info_hash.each {|key, value| self.send("#{key}=", value)}
-    @@generations[generation - 1] << self
   end
   
   def weakness
