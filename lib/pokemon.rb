@@ -21,10 +21,15 @@ class Pokemon
   
   def weakness
     list = []
-    multiplier = {}
-    types.each {|type| list << Type.find(type).weak_to}
-    
-      
-    
+    multiplier = Hash.new(0)
+    types.each do |type|
+      i = 0
+      while i < Type.find(type).weak_to.size do
+        list << Type.find(type).weak_to[i]
+        i += 1
+      end
+    end
+    list.each {|a| multiplier[a] += 1}
+    multiplier
   end
 end
