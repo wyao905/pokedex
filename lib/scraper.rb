@@ -15,39 +15,24 @@ class Scraper
       types = test_type[0].text.strip
     end
     
+    height = page.css("#bodyContent #mw-content-text table.roundy")[9].text.strip.split("\n")
+    height.delete("")
+    height.shift(2)
+    weight = page.css("#bodyContent #mw-content-text table.roundy")[10].text.strip.split("\n")
+    weight.delete("")
+    weight.shift(2)
+    
     pokemon_entry_hash = {:name => page.css(".roundy big b").text.strip,
                           :category => page.css("table.roundy table.roundy td.roundy table a span").text.strip,
                           :types => types,
                           :entry => page.css("table.roundy table.roundy td.roundybottom table.roundy td.roundy").first.text.strip,
-                          :weight => "some weight",
-                          :height => "some height",
+                          :weight => weight,
+                          :height => height,
                           :generation => "1",
                           :stats => "weak",
                           :evolution => "yes",
-                          :gender => "50/50"}
+                          :gender => page.css("#bodyContent #mw-content-text table.roundy")[5].text.strip.split("\n").pop().strip
   end
   
-  # def generation
-  #   self.get_page.css(".post")
-  # end
-  
-  # def make_courses
-  #   self.get_courses.each do |post|
-  #     course = Course.new
-  #     course.title = post.css("h2").text
-  #     course.schedule = post.css(".date").text
-  #     course.description = post.css("p").text
-  #   end
-  # end
-  
-  # def print_courses
-  #   self.make_courses
-  #   Course.all.each do |course|
-  #     if course.title
-  #       puts "Title: #{course.title}"
-  #       puts "  Schedule: #{course.schedule}"
-  #       puts "  Description: #{course.description}"
-  #     end
-  #   end
-  # end
+  def scrape_generation(pokemon_url)
 end
