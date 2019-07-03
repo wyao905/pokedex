@@ -1,4 +1,5 @@
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in pokedex.gemspec
-gemspec
+gem 'pry'
+gem 'nokogiri', '1.6'
+gem 'rspec'

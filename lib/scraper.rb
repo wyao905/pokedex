@@ -2,8 +2,6 @@ require 'nokogiri'
 require 'open-uri'
 require 'pry'
 
-require_relative './course.rb'
-
 class Scraper
   def self.scrape_page(pokemon_url) #scrapes the necessary pokedex info to be displayed for a single pokemon only
     page = Nokogiri::HTML(open(pokemon_url))

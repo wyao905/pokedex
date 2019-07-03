@@ -1,4 +1,4 @@
-require "pokedex/version"
+# require "pokedex/version"
 
 class Pokemon
   attr_reader :name,
@@ -27,5 +27,9 @@ class Pokemon
     end
     list.each {|a| multiplier[a] += 1}
     multiplier
+  end
+  
+  def self.create(info_hash)
+    self.new(info_hash)
   end
 end
