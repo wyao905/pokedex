@@ -7,7 +7,6 @@ class Pokemon
               :entry,       #pokedex entry description from first game
               :weight,      #returns a float in lbs
               :height,      #returns a float in inches
-              :generation,  #returns an integer 1 - 7
               :stats,       #hash of 6 stats {:hp, :attack, :defense, :special_atk, :special_def, :speed}
               :evolution,   #both pre and after
               :gender       #ratio split m/f

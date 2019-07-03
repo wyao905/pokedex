@@ -8,8 +8,37 @@ class CommandLineInterface
   BASE_PATH = "https://bulbapedia.bulbagarden.net/wiki/"
 
   def run
+    puts "Loading..."
+    
     get_pokemon_info
-    display_pokemon_info
+    
+    puts "Hello Trainer! Welcome to the Kanto Region."
+    puts "I contain information on all of the 151 Kanto Region Pokémon."
+    puts "What would you like to do?"
+    puts "------------------------"
+    puts "Menu: List | Find | Exit"
+    puts "------------------------"
+    input = gets.strip.downcase
+
+    while input != "exit" do
+      if input == "list"
+        menu(input)
+        input = gets.strip.downcase
+        if input == "alphabetical" || input == "numerical"
+          Pokemon.list(input)
+        else
+          input = list_input
+        end
+      elsif input == "find"
+        Pokemon.find
+      else
+        puts "Invalid choice, please select from the menu below."
+        puts "------------------------"
+        puts "Menu: List | Find | Exit"
+        puts "------------------------"
+        input = gets.strip.downcase
+      end
+    end
   end
 
   def get_pokemon_info
@@ -34,5 +63,11 @@ class CommandLineInterface
       puts "----------------------".colorize(:green)
     end
   end
-
+  
+  def menu(input)
+    if input == "list"
+      puts "--------------------------------------------"
+      puts "Menu: Alphabetical | Numerical | Back | Exit"
+      puts "--------------------------------------------"
+    else input == ""
 end
