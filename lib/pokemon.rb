@@ -1,15 +1,15 @@
 # require "pokedex/version"
 
 class Pokemon
-  attr_reader :name,
-              :category,
-              :types,       #can have 1 or 2
-              :entry,       #pokedex entry description from first game
-              :weight,      #returns a float in lbs
-              :height,      #returns a float in inches
-              :stats,       #hash of 6 stats {:hp, :attack, :defense, :special_atk, :special_def, :speed}
-              :evolution,   #both pre and after
-              :gender       #ratio split m/f
+  attr_accessor :name,
+                :category,
+                :types,       #can have 1 or 2
+                :entry,       #pokedex entry description from first game
+                :weight,      #returns a float in lbs
+                :height,      #returns a float in inches
+                :stats,       #hash of 6 stats {:hp, :attack, :defense, :special_atk, :special_def, :speed}
+                :evolution,   #both pre and after
+                :gender       #ratio split m/f
   
   def initialize(info_hash)
     info_hash.each {|key, value| self.send("#{key}=", value)}
