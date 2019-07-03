@@ -15,30 +15,32 @@ class CommandLineInterface
     puts "Hello Trainer! Welcome to the Kanto Region."
     puts "I contain information on all of the 151 Kanto Region Pokémon."
     puts "What would you like to do?"
-    puts "------------------------"
+    puts "-------------------------"
     puts "Menu: List | Find | Exit"
-    puts "------------------------"
+    puts "-------------------------"
     input = gets.strip.downcase
 
     while input != "exit" do
       if input == "list"
         menu(input)
-        input = gets.strip.downcase
-        if input == "alphabetical" || input == "numerical"
-          Pokemon.list(input)
-        else
-          input = list_input
+        list_input = gets.strip.downcase
+        while list_input != "back" do
+          if list_input == "alphabetical" || list_input == "numerical"
+            Pokemon.list(list_nput)
+            
+          end
         end
       elsif input == "find"
-        Pokemon.find
+          Pokemon.find
       else
         puts "Invalid choice, please select from the menu below."
-        puts "------------------------"
+        puts "-------------------------"
         puts "Menu: List | Find | Exit"
-        puts "------------------------"
+        puts "-------------------------"
         input = gets.strip.downcase
       end
     end
+    puts "Shutting down..."
   end
 
   def get_pokemon_info
@@ -66,8 +68,8 @@ class CommandLineInterface
   
   def menu(input)
     if input == "list"
-      puts "--------------------------------------------"
-      puts "Menu: Alphabetical | Numerical | Back | Exit"
-      puts "--------------------------------------------"
+      puts "--------------------------------------"
+      puts "Menu: Alphabetical | Numerical | Back"
+      puts "--------------------------------------"
     else input == ""
 end
