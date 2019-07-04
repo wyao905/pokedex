@@ -22,42 +22,33 @@ class CommandLineInterface
 
     while input != "exit" do
       if input == "list all"
+        puts "How would you like to list?"
         menu(input)
+        input = gets.strip.downcase
+      elsif input == "alphabetical" || input == "numerical"
+        puts "In alphabetical order:"
+        # Pokemon.list(input)
+        menu(input)
+        input = gets.strip.downcase
+      elsif input == "select"
+        puts "Which Pokémon you would like to see?"
+        input = gets.strip.downcase
+        test_valid? = input
+        while Pokemon.all.include?(pokemon_select) == true || (pokemon_select.to_i > 0 && pokemon_select.to_i <= 151) do
+      if temp_input == "alphabetical"
+        # Pokemon.find_by_name(pokemon_select)
+        puts "find by name"
+      elsif temp_input == "numerical"
+        # Pokemon.find_by_num(pokemon_select)
+      elsif select_input == "main"
+      elsif
+        puts "Invalid choice, please select from the menu below"
+        menu(select_input)
+        select_input = gets.strip.downcase
+      elsif list_all_input != "back"
+        puts "Invalid choice, please select from the menu below"
+        menu(list_all_input)
         list_all_input = gets.strip.downcase
-        while list_all_input != "back" do
-          if list_all_input == "alphabetical" || list_all_input == "numerical"
-            temp_input = list_all_input
-            # Pokemon.list(list_all_input)
-            puts "list pokemon"
-            menu(list_all_input)
-            select_input = gets.strip.downcase
-            while select_input != "back" do
-              if select_input == "select"
-                puts "Which Pokémon you would like to see?"
-                pokemon_select = gets.strip.downcase
-                while Pokemon.all.include?(pokemon_select) == true || (pokemon_select.to_i > 0 && pokemon_select.to_i <= 151) do
-                  if temp_input == "alphabetical"
-                    # Pokemon.find_by_name(pokemon_select)
-                    puts "find by name"
-                  elsif temp_input == "numerical"
-                    # Pokemon.find_by_num(pokemon_select)
-                end
-              elsif select_input == "main"
-                select_input = "back"
-                list_all_input = "back"
-                input = "default"
-              else
-                puts "Invalid choice, please select from the menu below"
-                menu(select_input)
-                select_input = gets.strip.downcase
-              end
-            end
-          elsif list_all_input != "back"
-            puts "Invalid choice, please select from the menu below"
-            menu(list_all_input)
-            list_all_input = gets.strip.downcase
-          end
-        end
       elsif input == "find"
           Pokemon.find
       elsif input == "default"
