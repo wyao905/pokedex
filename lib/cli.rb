@@ -24,16 +24,13 @@ class CommandLineInterface
       if input == "list all"
         puts "How would you like to list?"
         menu(input)
-        input = gets.strip.downcase
       elsif input == "alphabetical" || input == "numerical"
-        puts "In alphabetical order:"
+        puts "In #{input} order:"
         # Pokemon.list(input)
         menu(input)
-        input = gets.strip.downcase
       elsif input == "select"
         puts "Which Pokémon you would like to see?"
-        input = gets.strip.downcase
-        test_valid? = input
+        select_input = gets.strip.downcase
         while Pokemon.all.include?(pokemon_select) == true || (pokemon_select.to_i > 0 && pokemon_select.to_i <= 151) do
       if temp_input == "alphabetical"
         # Pokemon.find_by_name(pokemon_select)
@@ -44,11 +41,9 @@ class CommandLineInterface
       elsif
         puts "Invalid choice, please select from the menu below"
         menu(select_input)
-        select_input = gets.strip.downcase
       elsif list_all_input != "back"
         puts "Invalid choice, please select from the menu below"
         menu(list_all_input)
-        list_all_input = gets.strip.downcase
       elsif input == "find"
           Pokemon.find
       elsif input == "default"
@@ -57,8 +52,8 @@ class CommandLineInterface
       else
         puts "Invalid choice, please select from the menu below."
         menu(input)
-        input = gets.strip.downcase
       end
+      input = gets.strip.downcase
     end
     puts "Shutting down..."
   end
