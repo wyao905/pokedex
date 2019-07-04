@@ -105,12 +105,35 @@ class CommandLineInterface
         input = gets.strip.to_i
       end
     end
+    puts "What would you like to do?"
     start
   end
   
   def select_poke
-    puts "Please enter the name of the Pokémon you wish to look up."
-    input = gets.strip.downcase
+    selected_poke = nil
+    puts "Please enter the name of the Pokémon you wish to look up or choose from menu to go back."
+    menu_message(3)
+    input = gets.strip
+    while input.to_i != 1 && input.to_i != 2 && selected_poke = nil do
+      selected_poke = Pokemon.find_by_name(input.downcase)
+      while selected_poke == nil do
+        puts "Could not find the Pokémon. Please try again or choose from menu to go back."
+        menu_message(3)
+        input = gets.strip.downcase
+      end
+    end
+    
+    Pokemon.display(selected_poke)
+    
+    if input.to_i == 1
+      list(input.to_i)
+    elsif input.to_i == 2
+      puts "What would you like to do?"
+      start
+    end
+  end
+      
+    
     
     
   end
