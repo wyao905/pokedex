@@ -11,32 +11,61 @@ class CommandLineInterface
     puts "Loading..."
     
     get_pokemon_info
+    input = ""
     
     puts "Hello Trainer! Welcome to the Kanto Region."
     puts "I contain information on all of the 151 Kanto Region Pokémon."
     puts "What would you like to do?"
-    puts "-------------------------"
-    puts "Menu: List | Find | Exit"
-    puts "-------------------------"
+    
+    menu(input)
     input = gets.strip.downcase
 
     while input != "exit" do
-      if input == "list"
+      if input == "list all"
         menu(input)
-        list_input = gets.strip.downcase
-        while list_input != "back" do
-          if list_input == "alphabetical" || list_input == "numerical"
-            Pokemon.list(list_nput)
-            
+        list_all_input = gets.strip.downcase
+        while list_all_input != "back" do
+          if list_all_input == "alphabetical" || list_all_input == "numerical"
+            temp_input = list_all_input
+            # Pokemon.list(list_all_input)
+            puts "list pokemon"
+            menu(list_all_input)
+            select_input = gets.strip.downcase
+            while select_input != "back" do
+              if select_input == "select"
+                puts "Which Pokémon you would like to see?"
+                pokemon_select = gets.strip.downcase
+                while Pokemon.all.include?(pokemon_select) == true || (pokemon_select.to_i > 0 && pokemon_select.to_i <= 151) do
+                  if temp_input == "alphabetical"
+                    # Pokemon.find_by_name(pokemon_select)
+                    puts "find by name"
+                  elsif temp_input == "numerical"
+                    # Pokemon.find_by_num(pokemon_select)
+                end
+              elsif select_input == "main"
+                select_input = "back"
+                list_all_input = "back"
+                input = "default"
+              else
+                puts "Invalid choice, please select from the menu below"
+                menu(select_input)
+                select_input = gets.strip.downcase
+              end
+            end
+          elsif list_all_input != "back"
+            puts "Invalid choice, please select from the menu below"
+            menu(list_all_input)
+            list_all_input = gets.strip.downcase
           end
         end
       elsif input == "find"
           Pokemon.find
+      elsif input == "default"
+        input = "default"
+        menu(input)
       else
         puts "Invalid choice, please select from the menu below."
-        puts "-------------------------"
-        puts "Menu: List | Find | Exit"
-        puts "-------------------------"
+        menu(input)
         input = gets.strip.downcase
       end
     end
@@ -51,27 +80,28 @@ class CommandLineInterface
   def display_pokemon_info
     
   end
-
-  # def display_students
-  #   Student.all.each do |student|
-  #     puts "#{student.name.upcase}".colorize(:blue)
-  #     puts "  location:".colorize(:light_blue) + " #{student.location}"
-  #     puts "  profile quote:".colorize(:light_blue) + " #{student.profile_quote}"
-  #     puts "  bio:".colorize(:light_blue) + " #{student.bio}"
-  #     puts "  twitter:".colorize(:light_blue) + " #{student.twitter}"
-  #     puts "  linkedin:".colorize(:light_blue) + " #{student.linkedin}"
-  #     puts "  github:".colorize(:light_blue) + " #{student.github}"
-  #     puts "  blog:".colorize(:light_blue) + " #{student.blog}"
-  #     puts "----------------------".colorize(:green)
-  #   end
-  # end
   
   def menu(input)
-    # if input == "list"
+    if input == "list all"
       puts "--------------------------------------"
       puts "Menu: Alphabetical | Numerical | Back"
       puts "--------------------------------------"
-    # else input == ""
-    # end
+    elsif input == "find"
+      puts "----------------------------------"
+      puts "Menu: Name | Number | Type | Back"
+      puts "----------------------------------"
+    elsif input == "alphabetical" || input == "numerical" || input == "type"
+      puts "---------------------------"
+      puts "Menu: Select | Back | Main"
+      puts "---------------------------"
+    elsif input == "display"
+      puts "------------------------------------------------------------"
+      puts "Menu: Previous | Stats | Weakness | Evolution | Next | Back"
+      puts "------------------------------------------------------------"
+    else
+      puts "-----------------------------"
+      puts "Menu: List All | Find | Exit"
+      puts "-----------------------------"
+    end
   end
 end

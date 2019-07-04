@@ -11,6 +11,8 @@ class Pokemon
                 :evolution,   #both pre and after
                 :gender       #ratio split m/f
   
+  @@all = []
+  
   def initialize(info_hash)
     info_hash.each {|key, value| self.send("#{key}=", value)}
   end
@@ -27,6 +29,10 @@ class Pokemon
     end
     list.each {|a| multiplier[a] += 1}
     multiplier
+  end
+  
+  def self.all
+    @@all
   end
   
   def self.create(info_hash)
