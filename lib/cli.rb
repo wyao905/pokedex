@@ -115,19 +115,22 @@ class CommandLineInterface
     
   end
   
-  def menu(input)
-    if input == "list all"
-      puts "--------------------------------------"
-      puts "Menu: Alphabetical | Numerical | Back"
-      puts "--------------------------------------"
-    elsif input == "find"
+  def menu_message(input = "default")
+    if input == 1
+      puts "-----------------------------------"
+      puts "Menu: 1. List in alphabetical order"
+      puts "      2. List in numerical order"
+      puts "      3. Back"
+      puts "-----------------------------------"
+    elsif input == 2
       puts "----------------------------------"
       puts "Menu: Name | Number | Type | Back"
       puts "----------------------------------"
-    elsif input == "alphabetical" || input == "numerical" || input == "type"
-      puts "---------------------------"
-      puts "Menu: Select | Back | Main"
-      puts "---------------------------"
+    elsif input == 3
+      puts "-------------"
+      puts "Menu: 1. Back"
+      puts "      2. Main"
+      puts "-------------"
     elsif input == "display"
       puts "------------------------------------------------------------"
       puts "Menu: Previous | Stats | Weakness | Evolution | Next | Back"
