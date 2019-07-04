@@ -108,6 +108,13 @@ class CommandLineInterface
     start
   end
   
+  def select_poke
+    puts "Please enter the name of the Pokémon you wish to look up."
+    input = gets.strip.downcase
+    
+    
+  end
+  
   def menu(input)
     if input == "list all"
       puts "--------------------------------------"
