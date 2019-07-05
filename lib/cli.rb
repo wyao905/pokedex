@@ -18,60 +18,11 @@ class CommandLineInterface
     puts "What would you like to do?"
     
     start
-
-
-    # while input != "exit" do
-    #   if input == "list all"
-    #     puts "How would you like to list?"
-    #     menu(input)
-    #   elsif input == "alphabetical" || input == "numerical"
-    #     find_select = input
-    #     puts "In #{input} order:"
-    #     # Pokemon.list(input)
-    #     menu(input)
-    #   elsif input == "select"
-    #     puts "Which Pokémon you would like to see?"
-    #     select_input = gets.strip.downcase
-    #     while Pokemon.all.include?(select_input) != true || (pokemon_select.to_i <= 0 && pokemon_select.to_i > 151) do
-    #       puts "Could not find Pokémon. Please try again or go back."
-    #       select_input = gets.strip.downcase
-    #       if select_input == "back"
-            
-    #     end
-    #     if select_input == "alphabetical"
-    #       # Pokemon.find_by_name(pokemon_select)
-    #       puts "find by name"
-    #     else
-    #       # Pokemon.find_by_num(pokemon_select)
-    #     end
-    #   elsif select_input == "main"
-    #   elsif
-    #     puts "Invalid choice, please select from the menu below"
-    #     menu(select_input)
-    #   elsif list_all_input != "back"
-    #     puts "Invalid choice, please select from the menu below"
-    #     menu(list_all_input)
-    #   elsif input == "find"
-    #       Pokemon.find
-    #   elsif input == "default"
-    #     input = "default"
-    #     menu(input)
-    #   else
-    #     puts "Invalid choice, please select from the menu below."
-    #     menu(input)
-    #   end
-    #   input = gets.strip.downcase
-    # end
-    puts "Shutting down..."
   end
 
   def get_pokemon_info
     info_hash = Scraper.scrape_page(BASE_PATH + "Pikachu_(Pokemon)") #replace pikachu with interpolation
     Pokemon.create(info_hash)
-  end
-
-  def display_pokemon_info
-    
   end
   
   def start
@@ -87,6 +38,8 @@ class CommandLineInterface
         input = gets.strip.to_i
       end
     end
+    puts "Shutting down..."
+    exit!
   end
   
   def list(input)
@@ -115,7 +68,7 @@ class CommandLineInterface
     menu_message(3)
     input = gets.strip
     while input.to_i != 1 && input.to_i != 2 && selected_poke = nil do
-      selected_poke = Pokemon.find_by_name(input.downcase)
+      # selected_poke = Pokemon.find_by_name(input.downcase)
       while selected_poke == nil do
         puts "Could not find the Pokémon. Please try again or choose from menu to go back."
         menu_message(3)
@@ -123,7 +76,9 @@ class CommandLineInterface
       end
     end
     
-    Pokemon.display(selected_poke)
+    puts "displaying info"
+    # Pokemon.display(selected_poke)
+    menu_message(4)
     
     if input.to_i == 1
       list(input.to_i)
@@ -132,9 +87,11 @@ class CommandLineInterface
       start
     end
   end
-      
-    
-    
+  
+  def find(input)
+    puts "Choose find by name, pokédex number, or by type."
+    menu_message(input)
+    input = gets.strip.to_i
     
   end
   
@@ -154,10 +111,15 @@ class CommandLineInterface
       puts "Menu: 1. Back"
       puts "      2. Main"
       puts "-------------"
-    elsif input == "display"
-      puts "------------------------------------------------------------"
-      puts "Menu: Previous | Stats | Weakness | Evolution | Next | Back"
-      puts "------------------------------------------------------------"
+    elsif input == 4
+      puts "------------------"
+      puts "Menu: 1. Stats"
+      puts "      2. Weakness"
+      puts "      3. Evolution"
+      puts "      4. Previous"
+      puts "      5. Next"
+      puts "      6. Back"
+      puts "------------------"
     else
       puts "--------------------------------"
       puts "Menu: 1. List all Pokémon"
