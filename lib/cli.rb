@@ -49,10 +49,10 @@ class CommandLineInterface
     while input != 3 do
       if input == 1
         # Pokemon.list_alpha
-        select_poke
+        select_poke("name")
       elsif input == 2
         # Pokemon.list_num
-        select_poke
+        select_poke("number")
       else
         puts "Invalid choice, please select again."
         input = gets.strip.to_i
@@ -70,27 +70,25 @@ class CommandLineInterface
       while selected_poke = nil do
         puts "Could not find the Pokémon. Please try again."
         input = gets.strip.downcase
+        selected_poke = Pokemon.find_by_name(input)
       end
-    else
+    elsif method == "number"
       puts "Please enter the number of the Pokémon you wish to look up."
       input = gets.strip.to_i
-      selected_poke = Pokemon.find_by_name(input)
+      selected_poke = Pokemon.find_by_num(input)
       while selected_poke = nil do
         puts "Could not find the Pokémon. Please try again."
         input = gets.strip.to_i
+        selected_poke = Pokemon.find_by_num(input)
       end
     end
+    display(selected_poke)
+  end
     
+  def display(pokemon)
     puts "displaying info"
-    # Pokemon.display(selected_poke)
+    # Pokemon.display(pokemon)
     menu_message(3)
-    
-    if input.to_i == 1
-      list(input.to_i)
-    elsif input.to_i == 2
-      puts "What would you like to do?"
-      start
-    end
   end
   
   def find(input)

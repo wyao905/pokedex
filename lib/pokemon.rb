@@ -31,6 +31,14 @@ class Pokemon
     multiplier
   end
   
+  def find_by_name
+    true
+  end
+  
+  def find_by_num
+    true
+  end
+  
   def self.all
     @@all
   end
