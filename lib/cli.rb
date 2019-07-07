@@ -62,23 +62,28 @@ class CommandLineInterface
     start
   end
   
-  def select_poke
-    selected_poke = nil
-    puts "Please enter the name of the Pokémon you wish to look up or choose from menu to go back."
-    menu_message(3)
-    input = gets.strip
-    while input.to_i != 1 && input.to_i != 2 && selected_poke = nil do
-      # selected_poke = Pokemon.find_by_name(input.downcase)
-      while selected_poke == nil do
-        puts "Could not find the Pokémon. Please try again or choose from menu to go back."
-        menu_message(3)
+  def select_poke(method)
+    if method == "name"
+      puts "Please enter the name of the Pokémon you wish to look up."
+      input = gets.strip.downcase
+      selected_poke = Pokemon.find_by_name(input)
+      while selected_poke = nil do
+        puts "Could not find the Pokémon. Please try again."
         input = gets.strip.downcase
+      end
+    else
+      puts "Please enter the number of the Pokémon you wish to look up."
+      input = gets.strip.to_i
+      selected_poke = Pokemon.find_by_name(input)
+      while selected_poke = nil do
+        puts "Could not find the Pokémon. Please try again."
+        input = gets.strip.to_i
       end
     end
     
     puts "displaying info"
     # Pokemon.display(selected_poke)
-    menu_message(4)
+    menu_message(3)
     
     if input.to_i == 1
       list(input.to_i)
@@ -107,11 +112,6 @@ class CommandLineInterface
       puts "Menu: Name | Number | Type | Back"
       puts "----------------------------------"
     elsif input == 3
-      puts "-------------"
-      puts "Menu: 1. Back"
-      puts "      2. Main"
-      puts "-------------"
-    elsif input == 4
       puts "------------------"
       puts "Menu: 1. Stats"
       puts "      2. Weakness"
