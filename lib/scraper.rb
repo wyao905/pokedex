@@ -20,13 +20,21 @@ class Scraper
     weight.delete("")
     weight.shift(2)
     
+    scraped_stats = page.css("#contentbox #bodyContent #mw-content-text table div").text.split(/\D/).reject(&:empty?)
+    stats = {:HP => scraped_stats[0],
+             :Attack => scraped_stats[1],
+             :Defense => scraped_stats[2],
+             :Special_Attack => scraped_stats[3],
+             :Special_Defense => scraped_stats[4],
+             :Speed => scraped_stats[5]}
+    
     pokemon_entry_hash = {:name => page.css(".roundy big b").text.strip,
                           :category => page.css("table.roundy table.roundy td.roundy table a span").text.strip,
                           :types => types,
                           :entry => page.css("table.roundy table.roundy td.roundybottom table.roundy td.roundy").first.text.strip,
                           :weight => weight,
                           :height => height,
-                          :stats => "weak",
+                          :stats => stats,
                           :evolution => "yes",
                           :gender => page.css("#bodyContent #mw-content-text table.roundy")[5].text.strip.split("\n").pop().strip}
   end
