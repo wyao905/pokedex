@@ -99,6 +99,12 @@ class CommandLineInterface
     while input != 4 do
       if input == 1
         select_poke("name")
+      elsif input == 2
+        select_poke("number")
+      elsif input == 3
+        puts "Please enter the type of the Pokémon you wish to look up."
+        type_input = gets.strip.downcase
+        selected_type = Types.all.detect{|type| type.name == type_input}
     
   end
   
