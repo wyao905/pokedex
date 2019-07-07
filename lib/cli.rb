@@ -68,7 +68,7 @@ class CommandLineInterface
       input = gets.strip.downcase
       selected_poke = Pokemon.find_by_name(input)
       while selected_poke = nil do
-        puts "Could not find the Pokémon. Please try again."
+        puts "Could not find the Pokémon, please try again."
         input = gets.strip.downcase
         selected_poke = Pokemon.find_by_name(input)
       end
@@ -77,7 +77,7 @@ class CommandLineInterface
       input = gets.strip.to_i
       selected_poke = Pokemon.find_by_num(input)
       while selected_poke = nil do
-        puts "Could not find the Pokémon. Please try again."
+        puts "Could not find the Pokémon, please try again."
         input = gets.strip.to_i
         selected_poke = Pokemon.find_by_num(input)
       end
@@ -105,7 +105,21 @@ class CommandLineInterface
         puts "Please enter the type of the Pokémon you wish to look up."
         type_input = gets.strip.downcase
         selected_type = Types.all.detect{|type| type.name == type_input}
-    
+        while selected_type == nil do
+          puts "Invalid type, please try again."
+          type_input = gets.strip.downcase
+          selected_type = Types.all.detect{|type| type.name == type_input}
+        end
+        
+        selected_type.list
+        select_pokemon("name")
+      elsif input != 4
+        puts "Invalid choice, please select again."
+        input = gets.strip.to_i
+      end
+    end
+    puts "What would you like to do?"
+    start
   end
   
   def menu_message(input = "default")
