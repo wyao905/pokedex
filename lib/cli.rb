@@ -89,12 +89,16 @@ class CommandLineInterface
     puts "displaying info"
     # Pokemon.display(pokemon)
     menu_message(3)
+    exit!
   end
   
   def find(input)
     puts "Choose find by name, pokédex number, or by type."
     menu_message(input)
     input = gets.strip.to_i
+    while input != 4 do
+      if input == 1
+        select_poke("name")
     
   end
   
@@ -106,9 +110,12 @@ class CommandLineInterface
       puts "      3. Back"
       puts "-----------------------------------"
     elsif input == 2
-      puts "----------------------------------"
-      puts "Menu: Name | Number | Type | Back"
-      puts "----------------------------------"
+      puts "-----------------------"
+      puts "Menu: 1. Find by name"
+      puts "      2. Find by number"
+      puts "      3. Find by Type"
+      puts "      4. Back"
+      puts "-----------------------"
     elsif input == 3
       puts "------------------"
       puts "Menu: 1. Stats"
