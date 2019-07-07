@@ -34,7 +34,8 @@ class CommandLineInterface
       elsif input == 2
         find(input)
       else
-        puts "Invalid choice, please select again: "
+        puts "Invalid choice, please select again."
+        menu_message
         input = gets.strip.to_i
       end
     end
@@ -67,7 +68,7 @@ class CommandLineInterface
       puts "Please enter the name of the Pokémon you wish to look up."
       input = gets.strip.downcase
       selected_poke = Pokemon.find_by_name(input)
-      while selected_poke = nil do
+      while selected_poke == nil do
         puts "Could not find the Pokémon, please try again."
         input = gets.strip.downcase
         selected_poke = Pokemon.find_by_name(input)
@@ -76,7 +77,7 @@ class CommandLineInterface
       puts "Please enter the number of the Pokémon you wish to look up."
       input = gets.strip.to_i
       selected_poke = Pokemon.find_by_num(input)
-      while selected_poke = nil do
+      while selected_poke == nil do
         puts "Could not find the Pokémon, please try again."
         input = gets.strip.to_i
         selected_poke = Pokemon.find_by_num(input)
