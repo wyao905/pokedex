@@ -49,10 +49,10 @@ class CommandLineInterface
     input = gets.strip.to_i
     while input != 3 do
       if input == 1
-        # Pokemon.list_alpha
+        Pokemon.list_alpha
         select_poke("name")
       elsif input == 2
-        # Pokemon.list_num
+        Pokemon.list_num
         select_poke("number")
       else
         puts "Invalid choice, please select again."

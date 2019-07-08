@@ -2,13 +2,14 @@
 
 class Pokemon
   attr_accessor :name,
+                :number,
                 :category,
                 :types,       #can have 1 or 2
                 :entry,       #pokedex entry description from first game
                 :weight,      #returns a float in lbs
                 :height,      #returns a float in inches
                 :stats,       #hash of 6 stats {:hp, :attack, :defense, :special_atk, :special_def, :speed}
-                :evolution,   #both pre and after
+                :evolution,   #only scrape for after, pre-evo will be retroactively added from previous form
                 :gender       #ratio split m/f
   
   @@all = []
@@ -30,20 +31,51 @@ class Pokemon
     list.each {|a| multiplier[a] += 1}
     multiplier
   end
-  
-  def find_by_name
-    true
-  end
-  
-  def find_by_num
-    true
-  end
-  
+    
   def self.all
     @@all
   end
   
+  def self.find_by_name(poke_name)
+    self.all.detect{|pokemon| pokemon.name == poke_name}
+  end
+  
+  def find_by_num(poke_num)
+    self.all.detect{|pokemon| pokemon.number == poke_num}
+  end
+
   def self.create(info_hash)
-    self.new(info_hash)
+    new_pokemon = self.new(info_hash)
+    self.all << new_pokemon
+  end
+  
+  def self.list_alpha
+    self.all.sort # will try to list in three separate lines, need to lookup how to work with white spaces"
+  end
+  
+  def self.list_num
+    number_list = {} # does not need to be sorted, can just call keys in order to access values
+    self.all.each {|pokemon| number_list[pokemon.number] = pokemon.name}
+    puts "List of Pokémon in numerical order:"
+    i = 1
+    while i <= all.size do
+      puts "#{i}. #{number_list[i]}" # will try to list in three separate lines, need to lookup how to work with whitespaces to organize list better (total 151 pokemon need to be listed)
+      i += 1
+    end
+  end
+end
+
+
+class Pokemon
+  attr_accessor :num, :name
+  @@all = []
+  def initialize(name, num)
+    @num = num
+    @name = name
+    @@all << self
+  end
+  
+  def self.all
+    @@all
   end
 end
