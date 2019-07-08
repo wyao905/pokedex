@@ -3,6 +3,12 @@ require 'open-uri'
 require 'pry'
 
 class Scraper
+  def self.scrape_list
+    page = Nokogiri::HTML(open("https://bulbapedia.bulbagarden.net/wiki/Category:Generation_I_Pokémon"))
+    list = page.css("#bodyContent #mw-content-text #mw-pages div.mw-content-ltr a").text.split(" (Pokémon)")
+    list
+  end
+  
   def self.scrape_page(pokemon_url) #scrapes the necessary pokedex info to be displayed for a single pokemon only
     page = Nokogiri::HTML(open(pokemon_url))
     

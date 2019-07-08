@@ -11,7 +11,6 @@ class CommandLineInterface
     puts "Loading..."
     
     get_pokemon_info
-    input = ""
     
     puts "Hello Trainer! Welcome to the Kanto Region."
     puts "I contain information on all of the 151 Kanto Region Pokémon."
@@ -21,8 +20,10 @@ class CommandLineInterface
   end
 
   def get_pokemon_info
-    info_hash = Scraper.scrape_page(BASE_PATH + "Pikachu_(Pokemon)") #replace pikachu with interpolation
-    Pokemon.create(info_hash)
+    Scraper.scrape_list.each do |pokemon|
+      info_hash = Scraper.scrape_page(BASE_PATH + pokemon + "_(Pokemon)")
+      Pokemon.create(info_hash)
+    end
   end
   
   def start
