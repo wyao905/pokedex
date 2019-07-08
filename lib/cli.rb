@@ -56,6 +56,7 @@ class CommandLineInterface
         select_poke("number")
       else
         puts "Invalid choice, please select again."
+        menu_message(1)
         input = gets.strip.to_i
       end
     end
@@ -116,6 +117,7 @@ class CommandLineInterface
         select_pokemon("name")
       elsif input != 4
         puts "Invalid choice, please select again."
+        menu_message(2)
         input = gets.strip.to_i
       end
     end

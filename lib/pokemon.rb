@@ -64,18 +64,3 @@ class Pokemon
     end
   end
 end
-
-
-class Pokemon
-  attr_accessor :num, :name
-  @@all = []
-  def initialize(name, num)
-    @num = num
-    @name = name
-    @@all << self
-  end
-  
-  def self.all
-    @@all
-  end
-end
