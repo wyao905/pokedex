@@ -4,8 +4,16 @@ require 'pry'
 
 class Scraper
   def self.scrape_list
-    page = Nokogiri::HTML(open("https://bulbapedia.bulbagarden.net/wiki/Category:Generation_I_Pokémon"))
-    list = page.css("#bodyContent #mw-content-text #mw-pages div.mw-content-ltr a").text.split(" (Pokémon)")
+    list = []
+    page = Nokogiri::HTML(open("https://www.serebii.net/pokemon/gen1pokemon.shtml"))
+    entry = page.css("table.dextable td.fooinfo")
+    ind = 2
+    i = 0
+    wile i < Pokemon.all.size do
+      list << entry[ind].css("a").text
+      ind += 11
+      i += 1
+    end
     list
   end
   
