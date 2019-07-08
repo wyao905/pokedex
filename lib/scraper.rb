@@ -1,19 +1,23 @@
+require_relative "../lib/pokemon.rb"
 require 'nokogiri'
 require 'open-uri'
 require 'pry'
 
 class Scraper
   def self.scrape_list
-    list = []
+    list = Array.new
     page = Nokogiri::HTML(open("https://www.serebii.net/pokemon/gen1pokemon.shtml"))
     entry = page.css("table.dextable td.fooinfo")
     ind = 2
     i = 0
-    wile i < Pokemon.all.size do
+    while i < 151 do
       list << entry[ind].css("a").text
       ind += 11
       i += 1
     end
+    list[28] = "NidoranF"
+    list[31] = "NidoranM"
+    list[121] = "Mr._Mime"
     list
   end
   
