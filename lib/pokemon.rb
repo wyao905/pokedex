@@ -54,7 +54,7 @@ class Pokemon
     all.each {|pokemon| alpha_list << pokemon.name}
     i = 1
     while 1 <= all.size do
-      puts "#{alpha_list[1]}"
+      puts "#{alpha_list[i]}"
       i += 1
     end
   end
