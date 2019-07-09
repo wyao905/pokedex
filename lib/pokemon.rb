@@ -77,9 +77,16 @@ class Pokemon
     all.each {|pokemon| number_list[pokemon.number.to_i] = pokemon.name}
     puts "List of Pokémon in numerical order:"
     i = 1
-    while i <= all.size do
-      puts "#{(3*i) - 2}. #{number_list[(3*i) - 2]}".ljust(20) + "#{(3*i) - 1}. #{number_list[(3*i) - 1]}".ljust(20) + "#{3*i}. #{number_list[3*i]}"
-      i += 1
+    total = all.size
+    while i <= total do
+      if total - i == 0
+        puts "#{i}. #{number_list[i - 1]}"
+      elsif total - i == 1
+        puts "#{i}. #{number_list[i - 1]}".ljust(20) + "#{i + 1}. #{number_list[i]}"
+      else
+        puts "#{i}. #{number_list[i - 1]}".ljust(20) + "#{i + 1}. #{number_list[i]}".ljust(20) + "#{i + 2}. #{number_list[i + 1]}"
+      end
+      i += 3
     end
   end
 end
