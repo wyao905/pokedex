@@ -56,22 +56,22 @@ class Pokemon
     all << new_pokemon
   end
   
-  def self.list_alpha # will try to list in three separate lines, need to lookup how to work with white spaces"
+  def self.list_alpha
     sorted_list = all.sort_by {|pokemon| pokemon.name}
     i = 1
     while i <= all.size do
-      puts "#{sorted_list[i - 1].name}"
+      puts sorted_list[(3*i) - 3].name.ljust(20) + sorted_list[(3*i) - 2].name.ljust(20) + sorted_list[(3*i) - 1].name
       i += 1
     end
   end
   
   def self.list_num
-    number_list = {} # does not need to be sorted, can just call keys in order to access values
+    number_list = {}
     all.each {|pokemon| number_list[pokemon.number.to_i] = pokemon.name}
     puts "List of Pokémon in numerical order:"
     i = 1
     while i <= all.size do
-      puts "#{i}. #{number_list[i]}" # will try to list in three separate lines, need to lookup how to work with whitespaces to organize list better (total 151 pokemon need to be listed)
+      puts "#{(3*i) - 2}. #{number_list[(3*i) - 2]}".ljust(20) + "#{(3*i) - 1}. #{number_list[(3*i) - 1]}".ljust(20) + "#{3*i}. #{number_list[3*i]}"
       i += 1
     end
   end
