@@ -27,7 +27,7 @@ class CommandLineInterface
       elsif i == 31
         info_hash = Scraper.scrape_page(BASE_PATH + "NidoranM_(Pokemon)")
       elsif i == 121
-        info_hash = Scraper.scrape_page(BASE_PATH + "Mr.Mime_(Pokemon)")
+        info_hash = Scraper.scrape_page(BASE_PATH + "Mr._Mime_(Pokemon)")
       else
         info_hash = Scraper.scrape_page(BASE_PATH + pokemon + "_(Pokemon)")
       end
