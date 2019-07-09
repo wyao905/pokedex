@@ -24,7 +24,7 @@ class Scraper
     page = Nokogiri::HTML(open(pokemon_url))
     
     test_type = page.css("table.roundy td.roundy table.roundy table a span b")
-    if test_type[1] != "Unknown"
+    if test_type[1].text.strip != "Unknown"
       types = [test_type[0].text.strip, test_type[1].text.strip]
     else
       types = test_type[0].text.strip
