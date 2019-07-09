@@ -95,12 +95,16 @@ class CommandLineInterface
   end
     
   def display(pokemon)
-    puts "No. #{pokemon.number} - #{pokemon.name}"
-    puts pokemon.category
-    puts pokemon.types
-    puts pokemon.entry
-    puts "Weight: #{pokemon.weight[0]} / #{pokemon.weight[1]}"
-    puts "Height: #{pokemon.height[0]} / #{pokemon.height[1]}"
+    puts "No.#{pokemon.number}      : #{pokemon.name}"
+    puts "Category    : #{pokemon.category}"
+    if pokemon.types.size == 2
+      puts "Types       : #{pokemon.types[0]} / #{pokemon.types[1]}"
+    else
+      puts "Types       : #{pokemon.types[0]}"
+    end
+    puts "Entry       : #{pokemon.entry}"
+    puts "Weight      : #{pokemon.weight[0]} / #{pokemon.weight[1]}"
+    puts "Height      : #{pokemon.height[0]} / #{pokemon.height[1]}"
     puts "Gender Ratio: #{pokemon.gender}"
     menu_message(3)
     input = gets.strip.to_i
@@ -108,7 +112,6 @@ class CommandLineInterface
       puts "Invalid choice, please try again."
       input = gets.strip.to_i
     end
-    break
   end
   
   def find(input)
