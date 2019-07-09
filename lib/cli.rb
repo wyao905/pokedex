@@ -95,10 +95,20 @@ class CommandLineInterface
   end
     
   def display(pokemon)
-    puts "displaying info"
-    # Pokemon.display(pokemon)
+    puts "No. #{pokemon.number} - #{pokemon.name}"
+    puts pokemon.category
+    puts pokemon.types
+    puts pokemon.entry
+    puts "Weight: #{pokemon.weight[0]} / #{pokemon.weight[1]}"
+    puts "Height: #{pokemon.height[0]} / #{pokemon.height[1]}"
+    puts "Gender Ratio: #{pokemon.gender}"
     menu_message(3)
-    exit!
+    input = gets.strip.to_i
+    while input != 6 do
+      puts "Invalid choice, please try again."
+      input = gets.strip.to_i
+    end
+    break
   end
   
   def find(input)
