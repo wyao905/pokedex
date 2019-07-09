@@ -22,11 +22,7 @@ class CommandLineInterface
   def get_pokemon_info
     i = 0
     Scraper.scrape_list.each do |pokemon|
-      if i == 28
-        info_hash = Scraper.scrape_page(BASE_PATH + "NidoranF_(Pokemon)")
-      elsif i == 31
-        info_hash = Scraper.scrape_page(BASE_PATH + "NidoranM_(Pokemon)")
-      elsif i == 121
+      if i == 121
         info_hash = Scraper.scrape_page(BASE_PATH + "Mr._Mime_(Pokemon)")
       else
         info_hash = Scraper.scrape_page(BASE_PATH + pokemon + "_(Pokemon)")

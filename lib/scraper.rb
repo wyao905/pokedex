@@ -16,7 +16,7 @@ class Scraper
       i += 1
     end
     list[28] = "NidoranF"
-    list[31] = "NidoranM")
+    list[31] = "NidoranM"
     list
   end
   
