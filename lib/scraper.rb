@@ -30,12 +30,12 @@ class Scraper
       types = test_type[0].text.strip
     end
     
-    height = page.css("#bodyContent #mw-content-text table.roundy")[9].text.strip.split("\n")
-    height.delete("")
-    height.shift(2)
-    weight = page.css("#bodyContent #mw-content-text table.roundy")[10].text.strip.split("\n")
-    weight.delete("")
-    weight.shift(2)
+    scrape_height = page.css("#bodyContent #mw-content-text table.roundy")[9].text.strip.split("\n")
+    scrape_height.delete("")
+    height = scrape_height.shift(2)
+    scrape_weight = page.css("#bodyContent #mw-content-text table.roundy")[10].text.strip.split("\n")
+    scrape_weight.delete("")
+    weight = scrape_weight.shift(2)
     
     scraped_stats = page.css("#contentbox #bodyContent #mw-content-text table div").text.split(/\D/).reject(&:empty?)
     stats = {:HP => scraped_stats[0],
