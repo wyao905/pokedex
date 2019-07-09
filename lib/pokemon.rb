@@ -38,7 +38,7 @@ class Pokemon
   end
   
   def self.find_by_name(poke_name)
-    self.all.detect{|pokemon| pokemon.name == poke_name}
+    self.all.detect{|pokemon| pokemon.name.downcase == poke_name}
   end
   
   def find_by_num(poke_num)
@@ -53,8 +53,8 @@ class Pokemon
   def self.list_alpha # will try to list in three separate lines, need to lookup how to work with white spaces"
     alpha_list = []
     all.each {|pokemon| alpha_list << pokemon.name}
+    alpha_list.sort
     i = 1
-    # binding.pry
     while i <= all.size do
       puts "#{alpha_list[i - 1]}"
       i += 1
