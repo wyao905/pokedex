@@ -38,24 +38,29 @@ class Pokemon
   end
   
   def self.find_by_name(poke_name)
-    self.all.detect{|pokemon| pokemon.name.downcase == poke_name}
+    if poke_name == "NidoranF".downcase
+      all[28].name
+    elsif poke_name == "NidoranM".downcase
+      all[31].name
+    else
+      all.detect{|pokemon| pokemon.name.downcase == poke_name}
+    end
   end
   
-  def find_by_num(poke_num)
-    self.all.detect{|pokemon| pokemon.number == poke_num}
+  def self.find_by_num(poke_num)
+    all.detect{|pokemon| pokemon.number == poke_num}
   end
 
   def self.create(info_hash)
     new_pokemon = self.new(info_hash)
-    self.all << new_pokemon
+    all << new_pokemon
   end
   
   def self.list_alpha # will try to list in three separate lines, need to lookup how to work with white spaces"
     sorted_list = all.sort_by {|pokemon| pokemon.name}
-    binding.pry
     i = 1
     while i <= all.size do
-      puts "#{sorted_list[i - 1]}"
+      puts "#{sorted_list[i - 1].name}"
       i += 1
     end
   end
