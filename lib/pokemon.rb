@@ -48,7 +48,7 @@ class Pokemon
   end
   
   def self.find_by_num(poke_num)
-    all.detect{|pokemon| pokemon.number == poke_num}
+    all.detect{|pokemon| pokemon.number.to_i == poke_num}
   end
 
   def self.create(info_hash)
@@ -67,7 +67,7 @@ class Pokemon
   
   def self.list_num
     number_list = {} # does not need to be sorted, can just call keys in order to access values
-    all.each {|pokemon| number_list[pokemon.number] = pokemon.name}
+    all.each {|pokemon| number_list[pokemon.number.to_i] = pokemon.name}
     puts "List of Pokémon in numerical order:"
     i = 1
     while i <= all.size do
