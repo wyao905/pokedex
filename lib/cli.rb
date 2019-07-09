@@ -100,7 +100,7 @@ class CommandLineInterface
     if pokemon.types.size == 2
       puts "Types       : #{pokemon.types[0]} / #{pokemon.types[1]}"
     else
-      puts "Types       : #{pokemon.types[0]}"
+      puts "Types       : #{pokemon.types}"
     end
     puts "Entry       : #{pokemon.entry}"
     puts "Weight      : #{pokemon.weight[0]} / #{pokemon.weight[1]}"
