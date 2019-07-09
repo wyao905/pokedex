@@ -51,12 +51,11 @@ class Pokemon
   end
   
   def self.list_alpha # will try to list in three separate lines, need to lookup how to work with white spaces"
-    alpha_list = []
-    all.each {|pokemon| alpha_list << pokemon.name}
-    alpha_list.sort
+    sorted_list = all.sort_by {|pokemon| pokemon.name}
+    binding.pry
     i = 1
     while i <= all.size do
-      puts "#{alpha_list[i - 1]}"
+      puts "#{sorted_list[i - 1]}"
       i += 1
     end
   end
