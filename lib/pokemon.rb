@@ -1,4 +1,5 @@
 # require "pokedex/version"
+require 'pry'
 
 class Pokemon
   attr_accessor :name,
@@ -53,8 +54,9 @@ class Pokemon
     alpha_list = []
     all.each {|pokemon| alpha_list << pokemon.name}
     i = 1
+    # binding.pry
     while 1 <= all.size do
-      puts "#{alpha_list[i]}"
+      puts "#{alpha_list[i - 1]}"
       i += 1
     end
   end
