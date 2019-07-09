@@ -80,11 +80,11 @@ class Pokemon
     total = all.size
     while i <= total do
       if total - i == 0
-        puts "#{i}. #{number_list[i - 1]}"
+        puts "#{i}. #{number_list[i]}"
       elsif total - i == 1
-        puts "#{i}. #{number_list[i - 1]}".ljust(20) + "#{i + 1}. #{number_list[i]}"
+        puts "#{i}. #{number_list[i]}".ljust(20) + "#{i + 1}. #{number_list[i + 1]}"
       else
-        puts "#{i}. #{number_list[i - 1]}".ljust(20) + "#{i + 1}. #{number_list[i]}".ljust(20) + "#{i + 2}. #{number_list[i + 1]}"
+        puts "#{i}. #{number_list[i]}".ljust(20) + "#{i + 1}. #{number_list[i + 1]}".ljust(20) + "#{i + 2}. #{number_list[i + 2]}"
       end
       i += 3
     end
