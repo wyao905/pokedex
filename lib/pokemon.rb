@@ -59,9 +59,16 @@ class Pokemon
   def self.list_alpha
     sorted_list = all.sort_by {|pokemon| pokemon.name}
     i = 1
-    while i <= all.size do
-      puts sorted_list[(3*i) - 3].name.ljust(20) + sorted_list[(3*i) - 2].name.ljust(20) + sorted_list[(3*i) - 1].name
-      i += 1
+    total = all.size
+    while i <= total do
+      if total - i == 0
+        puts sorted_list[i - 1].name
+      elsif total - i == 1
+        puts sorted_list[i - 1].name.ljust(20) + sorted_list[i].name
+      else
+        puts sorted_list[i - 1].name.ljust(20) + sorted_list[i].name.ljust(20) + sorted_list[i + 1].name
+      end
+      i += 3
     end
   end
   
