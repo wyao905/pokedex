@@ -18,6 +18,12 @@ class CommandLineInterface
     
     start
   end
+  
+  def get_type_info
+    i = 0
+    Scraper.scrape_types(BASE_PATH + "Type").each do |a|
+      if i < 18
+        Type.create(a)
 
   def get_pokemon_info
     i = 0
@@ -102,7 +108,7 @@ class CommandLineInterface
     else
       puts "Types       : #{pokemon.types}"
     end
-    puts "Entry       : #{pokemon.entry}"
+    puts "Entry       : " + pokemon.entry
     puts "Weight      : #{pokemon.weight[0]} / #{pokemon.weight[1]}"
     puts "Height      : #{pokemon.height[0]} / #{pokemon.height[1]}"
     puts "Gender Ratio: #{pokemon.gender}"

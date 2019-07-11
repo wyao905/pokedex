@@ -20,6 +20,15 @@ class Scraper
     list
   end
   
+  def self.scrape_types(type_url)
+    page = Nokogiri::HTML(open(type_url))
+    list = page.css("#contentbox #bodyContent #mw-content-text table.roundy tr td").text.split("\n")
+    list.pop
+    list.delete("")
+    list.delete("???")
+    list
+  end
+  
   def self.scrape_page(pokemon_url) #scrapes the necessary pokedex info to be displayed for a single pokemon only
     page = Nokogiri::HTML(open(pokemon_url))
     
