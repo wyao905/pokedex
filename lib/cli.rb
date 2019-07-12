@@ -21,9 +21,15 @@ class CommandLineInterface
   
   def get_type_info
     i = 0
-    Scraper.scrape_types(BASE_PATH + "Type").each do |a|
-      if i < 18
-        Type.create(a)
+    list = Scraper.scrape_types(BASE_PATH + "Type")
+    types = list.shift(18)
+    while i < 18 do
+      new_type = Type.create(types)
+      if new_type.name == "Normal"
+        
+      
+    end
+  end
 
   def get_pokemon_info
     i = 0
