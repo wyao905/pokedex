@@ -24,10 +24,118 @@ class CommandLineInterface
     list = Scraper.scrape_types(BASE_PATH + "Type")
     types = list.shift(18)
     while i < 18 do
-      new_type = Type.create(types)
-      if new_type.name == "Normal"
-        
+      new_type = Type.create(types[i])
+      j = 0
       
+      if new_type.name == "Normal"
+        while j < 18 do
+          new_type.weakness << list[j * 18]
+          new_type.strong_against << list[j]
+          j += 1
+        end
+      elsif new_type.name == "Fighting"
+        while j < 18 do
+          new_type.weakness << list[(j * 18) + 1]
+          new_type.strong_against << list[j + 18]
+          j += 1
+        end
+      elsif new_type.name == "Flying"
+        while j < 18 do
+          new_type.weakness << list[(j * 18) + 2]
+          new_type.strong_against << list[j + 36]
+          j += 1
+        end
+      elsif new_type.name == "Poison"
+        while j < 18 do
+          new_type.weakness << list[(j * 18) + 3]
+          new_type.strong_against << list[j + 54]
+          j += 1
+        end
+      elsif new_type.name == "Ground"
+        while j < 18 do
+          new_type.weakness << list[(j * 18) + 4]
+          new_type.strong_against << list[j + 72]
+          j += 1
+        end
+      elsif new_type.name == "Rock"
+        while j < 18 do
+          new_type.weakness << list[(j * 18) + 5]
+          new_type.strong_against << list[j + 90]
+          j += 1
+        end
+      elsif new_type.name == "Bug"
+        while j < 18 do
+          new_type.weakness << list[(j * 18) + 6]
+          new_type.strong_against << list[j + 108]
+          j += 1
+        end
+      elsif new_type.name == "Ghost"
+        while j < 18 do
+          new_type.weakness << list[(j * 18) + 7]
+          new_type.strong_against << list[j + 126]
+          j += 1
+        end
+      elsif new_type.name == "Steel"
+        while j < 18 do
+          new_type.weakness << list[(j * 18) + 8]
+          new_type.strong_against << list[j + 144]
+          j += 1
+        end
+      elsif new_type.name == "Fire"
+        while j < 18 do
+          new_type.weakness << list[(j * 18) + 9]
+          new_type.strong_against << list[j + 162]
+          j += 1
+        end
+      elsif new_type.name == "Water"
+        while j < 18 do
+          new_type.weakness << list[(j * 18) + 10]
+          new_type.strong_against << list[j + 180]
+          j += 1
+        end
+      elsif new_type.name == "Grass"
+        while j < 18 do
+          new_type.weakness << list[(j * 18) + 11]
+          new_type.strong_against << list[j + 198]
+          j += 1
+        end
+      elsif new_type.name == "Electric"
+        while j < 18 do
+          new_type.weakness << list[(j * 18) + 12]
+          new_type.strong_against << list[j + 216]
+          j += 1
+        end
+      elsif new_type.name == "Psychic"
+        while j < 18 do
+          new_type.weakness << list[(j * 18) + 13]
+          new_type.strong_against << list[j + 234]
+          j += 1
+        end
+      elsif new_type.name == "Ice"
+        while j < 18 do
+          new_type.weakness << list[(j * 18) + 14]
+          new_type.strong_against << list[j + 252]
+          j += 1
+        end
+      elsif new_type.name == "Dragon"
+        while j < 18 do
+          new_type.weakness << list[(j * 18) + 15]
+          new_type.strong_against << list[j + 270]
+          j += 1
+        end
+      elsif new_type.name == "Dark"
+        while j < 18 do
+          new_type.weakness << list[(j * 18) + 16]
+          new_type.strong_against << list[j + 288]
+          j += 1
+        end
+      else
+        while j < 18 do
+          new_type.weakness << list[(j * 18) + 17]
+          new_type.strong_against << list[j + 306]
+          j += 1
+        end
+      end
     end
   end
 

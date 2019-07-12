@@ -25,6 +25,7 @@ class Scraper
     list = page.css("#contentbox #bodyContent #mw-content-text table.roundy tr td").text.split("\n")
     list.pop
     list.delete("")
+    list.map! {|a| a.strip}
     list.delete("???")
     list
   end
