@@ -1,5 +1,6 @@
 class Type
   attr_accessor :name
+  attr_reader :weakness, :strong_against, :pokemon
   
   @pokemon = []
   @weakness = []
@@ -8,14 +9,6 @@ class Type
   
   def initialize(name)
     @name = name
-  end
-  
-  def weakness(array)
-    @weakness
-  end
-  
-  def strong_against(array)
-    @strong_against
   end
   
   def show_weakness

@@ -58,7 +58,7 @@ class Scraper
     pokemon_entry_hash = {:name => page.css(".roundy big b").text.strip,
                           :number => page.css("#mw-content-text table.roundy table.roundy th.roundy big big a span").text.delete("#"),
                           :category => page.css("table.roundy table.roundy td.roundy table a span").text.strip,
-                          :types => types,
+                          :type_names => types,
                           :entry => page.css("table.roundy table.roundy td.roundybottom table.roundy td.roundy").first.text.strip,
                           :weight => weight,
                           :height => height,

@@ -5,32 +5,36 @@ class Pokemon
   attr_accessor :name,
                 :number,
                 :category,
-                :types,       #can have 1 or 2
-                :entry,       #pokedex entry description from first game
-                :weight,      #returns a float in lbs
-                :height,      #returns a float in inches
-                :stats,       #hash of 6 stats {:hp, :attack, :defense, :special_atk, :special_def, :speed}
-                :evolution,   #only scrape for after, pre-evo will be retroactively added from previous form
-                :gender       #ratio split m/f
+                :type_names,    #can have 1 or 2
+                :entry,         #pokedex entry description from first game
+                :weight,        #returns a float in lbs
+                :height,        #returns a float in inches
+                :stats,         #hash of 6 stats {:hp, :attack, :defense, :special_atk, :special_def, :speed}
+                :evolution,     #only scrape for after, pre-evo will be retroactively added from previous form
+                :gender,        #ratio split m/f
+                :types          #actual type object
   
   @@all = []
   
   def initialize(info_hash)
     info_hash.each {|key, value| self.send("#{key}=", value)}
+    assign_type
   end
   
-  def weakness
-    list = []
-    multiplier = Hash.new(0)
-    types.each do |type|
-      i = 0
-      while i < Type.find(type).weak_to.size do
-        list << Type.find(type).weak_to[i]
-        i += 1
+  def assign_type
+    if type_names.class == Array
+      list = []
+      type_names.each do |type|
+        pokemon_type = Type.find(type)
+        list << pokemon_type
+        pokemon_type.pokemon << self if pokemon_type.pokemon !include?(self)
       end
+      self.types = list
+    else
+      pokemon_type = Type.find(type_names)
+      self.types = pokemon_type
+      pokemon_type.pokemon << self if pokemon_type.pokemon !include?(self)
     end
-    list.each {|a| multiplier[a] += 1}
-    multiplier
   end
     
   def self.all

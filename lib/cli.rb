@@ -217,10 +217,10 @@ class CommandLineInterface
   def display(pokemon)
     puts "No.#{pokemon.number}      : #{pokemon.name}"
     puts "Category    : #{pokemon.category}"
-    if pokemon.types.size == 2
-      puts "Types       : #{pokemon.types[0]} / #{pokemon.types[1]}"
+    if pokemon.types.class == Array
+      puts "Types       : #{pokemon.types[0].name} / #{pokemon.types[1].name}"
     else
-      puts "Types       : #{pokemon.types}"
+      puts "Types       : #{pokemon.types.name}"
     end
     puts "Entry       : " + pokemon.entry
     puts "Weight      : #{pokemon.weight[0]} / #{pokemon.weight[1]}"
