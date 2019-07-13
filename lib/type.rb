@@ -52,6 +52,7 @@ class Type
   end
   
   def self.find(name)
+    all.detect{|type| type.name == name}
   end
   
   def self.create(name)

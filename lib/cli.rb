@@ -247,11 +247,11 @@ class CommandLineInterface
       elsif input == 3
         puts "Please enter the type of the Pokémon you wish to look up."
         type_input = gets.strip.downcase
-        selected_type = Types.all.detect{|type| type.name == type_input}
+        selected_type = Types.find(type_input)
         while selected_type == nil do
           puts "Invalid type, please try again."
           type_input = gets.strip.downcase
-          selected_type = Types.all.detect{|type| type.name == type_input}
+          selected_type = Types.find(type_input)
         end
         
         selected_type.list
