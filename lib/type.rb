@@ -25,14 +25,13 @@ class Type
       i += 1
     end
     list
-      	1×	½×
   end
   
   def show_resistance
     list = Array.new
     i = 0
     while i < 18 do
-      if resist[i] == "×"
+      if resist[i] == "½×"
         list << Type.find(TYPE_ORDER[i])
       end
       i += 1
@@ -41,6 +40,15 @@ class Type
   end
   
   def show_immune
+    list = Array.new
+    i = 0
+    while i < 18 do
+      if resist[i] == "0×"
+        list << Type.find(TYPE_ORDER[i])
+      end
+      i += 1
+    end
+    list
   end
   
   def self.find(name)
