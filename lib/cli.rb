@@ -27,7 +27,6 @@ class CommandLineInterface
     while i < 18 do
       new_type = Type.create(types[i])
       j = 0
-      
       if new_type.name == "Normal"
         while j < 18 do
           new_type.weakness << list[j * 18]

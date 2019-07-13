@@ -58,6 +58,7 @@ class Type
   def self.create(name)
     new_type = self.new(name)
     all << new_type
+    new_type
   end
   
   def self.all
