@@ -10,6 +10,7 @@ class CommandLineInterface
   def run
     puts "Loading..."
     
+    get_type_info
     get_pokemon_info
     
     puts "Hello Trainer! Welcome to the Kanto Region."
