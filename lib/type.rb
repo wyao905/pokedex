@@ -1,35 +1,49 @@
 class Type
   attr_accessor :name
-  attr_reader :weakness, :strong_against, :pokemon
+  attr_reader :weakness, :resist, :pokemon
   
-  TYPE_ORDER = ["Normal", "Fighting", "Flying", "Poison", "Ground", "Rock",
-                "Bug", "Ghost", "Steel", "Fire", "Water", "Grass",
-                "Electric", "Psychic", "Ice", "Dragon", "Dark", "Fairy"]
+  TYPE_ORDER = ["Normal",   "Fighting", "Flying", "Poison", "Ground", "Rock",
+                "Bug",      "Ghost",    "Steel",  "Fire",   "Water",  "Grass",
+                "Electric", "Psychic",  "Ice",    "Dragon", "Dark",   "Fairy"]
   
   @pokemon = []
   @weakness = []
-  @strong_against = []
+  @resist = []
   @@all = []
   
   def initialize(name)
     @name = name
   end
-  
-  def find(name)
-  end
-  
+
   def show_weakness
-    list = Hash.new
+    list = Array.new
     i = 0
     while i < 18 do
       if weakness[i] == "2×"
-        if i == 0
-          
+        list << Type.find(TYPE_ORDER[i])
+      end
+      i += 1
+    end
+    list
       	1×	½×
   end
   
-  def show_strong_against
-    
+  def show_resistance
+    list = Array.new
+    i = 0
+    while i < 18 do
+      if resist[i] == "×"
+        list << Type.find(TYPE_ORDER[i])
+      end
+      i += 1
+    end
+    list
+  end
+  
+  def show_immune
+  end
+  
+  def self.find(name)
   end
   
   def self.create(name)
