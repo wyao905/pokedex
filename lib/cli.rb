@@ -290,7 +290,7 @@ class CommandLineInterface
       puts "-----------------------"
       puts "Menu: 1. Find by name"
       puts "      2. Find by number"
-      puts "      3. Find by Type"
+      puts "      3. Find by type"
       puts "      4. Back"
       puts "-----------------------"
     elsif input == 3

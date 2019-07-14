@@ -61,7 +61,7 @@ class Pokemon
   end
   
   def self.list_alpha
-    sorted_list = all.sort_by {|pokemon| pokemon.name}
+    sorted_list = all.sort_by{|pokemon| pokemon.name}
     i = 1
     total = all.size
     while i <= total do
@@ -78,7 +78,7 @@ class Pokemon
   
   def self.list_num
     number_list = {}
-    all.each {|pokemon| number_list[pokemon.number.to_i] = pokemon.name}
+    all.each{|pokemon| number_list[pokemon.number.to_i] = pokemon.name}
     puts "List of Pokémon in numerical order:"
     i = 1
     total = all.size
