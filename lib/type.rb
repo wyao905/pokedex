@@ -17,48 +17,21 @@ class Type
     @resist = []
   end
 
-  def show_weakness
+  def show_effect
     list = Hash.new
     i = 0
     while i < 18 do
       if effect[i] == "2"
-        list << Type.find(TYPE_ORDER[i])
+        list[Type.find(TYPE_ORDER[i])] = 2
+      elsif effect[i] == "1"
+        list[Type.find(TYPE_ORDER[i])] = 1
+      elsif effect[i] == "0.5"
+        list[Type.find(TYPE_ORDER[i])] = 0.5
+      else
+        list[Type.find(TYPE_ORDER[i])] = 0
       end
-      i += 1
     end
-    list
   end
-  
-  def show_resistance
-    list = Hash.new
-    i = 0
-    while i < 18 do
-      if effect[i] == "0.5"
-        list << Type.find(TYPE_ORDER[i])
-      end
-      i += 1
-    end
-    list
-  end
-  
-  def show_immune
-    list = Hash.new
-    i = 0
-    while i < 18 do
-      if effect[i] == "0"
-        list << Type.find(TYPE_ORDER[i])
-      end
-      i += 1
-    end
-    list
-  end
-  
-  def show_neutral
-    list = Hash.new
-    i = 0
-    while i < 18 do
-      if effect[i] == "1"
-        list[Type.find(TYPE_ORDER[i])]
   
   def list
     type_list = []
