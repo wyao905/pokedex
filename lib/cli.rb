@@ -1,4 +1,4 @@
-require_relative "../lib/pokemon.rb"
+firerequire_relative "../lib/pokemon.rb"
 require_relative "../lib/scraper.rb"
 require_relative "../lib/type.rb"
 require 'nokogiri'
@@ -225,7 +225,7 @@ class CommandLineInterface
   end
     
   def display(pokemon)
-    puts "No.#{pokemon.number}      : #{pokemon.name}"
+    puts "No.#{pokemon.number} - #{pokemon.name}"
     puts "Category    : #{pokemon.category}"
     if pokemon.types.class == Array
       puts "Types       : #{pokemon.types[0].name} / #{pokemon.types[1].name}"
@@ -239,9 +239,31 @@ class CommandLineInterface
     menu_message(3)
     input = gets.strip.to_i
     while input != 6 do
-      puts "Invalid choice, please try again."
-      input = gets.strip.to_i
+      if input == 1
+        pokemon.stats
+        menu_message(3)
+      elsif input == 2
+        puts pokemon.type
+        
+      elsif input == 3
+        
+      elsif input == 4
+        
+      elsif input == 5
+        
+      elsif input == 7
+        
+      elsif input != 6
+        puts "Invalid choice, please try again."
+        input = gets.strip.to_i
+      end
     end
+      # puts "---------------------------------------------"
+      # puts "Menu: 1. Stats                5. Next Pokémon"
+      # puts "      2. Type effectiveness   6. Back"
+      # puts "      3. Evolution line       7. Search again"
+      # puts "      4. Previous Pokémon"
+      # puts "---------------------------------------------"
   end
   
   def find(input)
@@ -294,14 +316,12 @@ class CommandLineInterface
       puts "      4. Back"
       puts "-----------------------"
     elsif input == 3
-      puts "------------------"
-      puts "Menu: 1. Stats"
-      puts "      2. Weakness"
-      puts "      3. Evolution"
-      puts "      4. Previous"
-      puts "      5. Next"
-      puts "      6. Back"
-      puts "------------------"
+      puts "---------------------------------------------"
+      puts "Menu: 1. Stats                5. Next Pokémon"
+      puts "      2. Type effectiveness   6. Back"
+      puts "      3. Evolution line       7. Search again"
+      puts "      4. Previous Pokémon"
+      puts "---------------------------------------------"
     else
       puts "--------------------------------"
       puts "Menu: 1. List all Pokémon"
