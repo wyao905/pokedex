@@ -6,13 +6,13 @@ class Type
                 "Bug",      "Ghost",    "Steel",  "Fire",   "Water",  "Grass",
                 "Electric", "Psychic",  "Ice",    "Dragon", "Dark",   "Fairy"]
   
-  @pokemon = []
-  @weakness = []
-  @resist = []
   @@all = []
   
   def initialize(name)
     @name = name
+    @pokemon = []
+    @weakness = []
+    @resist = []
   end
 
   def show_weakness
