@@ -136,6 +136,7 @@ class CommandLineInterface
           j += 1
         end
       end
+      i += 1
     end
   end
 

@@ -1,3 +1,5 @@
+require 'pry'
+
 class Type
   attr_accessor :name
   attr_reader :weakness, :resist, :pokemon
