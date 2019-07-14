@@ -244,15 +244,15 @@ class CommandLineInterface
         menu_message(3)
       elsif input == 2
         puts pokemon.type
-        
+        # display weak to, resist, immune lists
       elsif input == 3
-        
+        # display evo line charmander -> charmeleon -> charizard
       elsif input == 4
-        
+        # call same function to display previous pokemon info
       elsif input == 5
-        
+        # call same function to display next pokemon info
       elsif input == 7
-        
+        # call start function
       elsif input != 6
         puts "Invalid choice, please try again."
         input = gets.strip.to_i
