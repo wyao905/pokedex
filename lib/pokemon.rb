@@ -13,7 +13,7 @@ class Pokemon
                 :evolution,     #only scrape for after, pre-evo will be retroactively added from previous form
                 :gender,        #ratio split m/f
                 :types          #actual type object
-  
+
   @@all = []
   
   def initialize(info_hash)
@@ -34,6 +34,18 @@ class Pokemon
       pokemon_type = Type.find(type_names)
       self.types = pokemon_type
       pokemon_type.pokemon << self if !pokemon_type.pokemon.include?(self)
+    end
+  end
+  
+  def type_effect
+    effectiveness = {:super=>[], :very=>[], :neutral=>[], :not=>[], :very_not=>[], :immune=>[]}
+    if types.class == Array
+      types[0].show_weakness.each do |type1|      # 4x effectiveness
+        if types[1].show_immune.include?(type1)
+          effectiveness[:immune] << type1
+        elsif 
+    else
+      
     end
   end
     

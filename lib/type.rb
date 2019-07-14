@@ -2,7 +2,7 @@ require 'pry'
 
 class Type
   attr_accessor :name
-  attr_reader :weakness, :resist, :pokemon
+  attr_reader :effect, :pokemon
   
   TYPE_ORDER = ["Normal",   "Fighting", "Flying", "Poison", "Ground", "Rock",
                 "Bug",      "Ghost",    "Steel",  "Fire",   "Water",  "Grass",
@@ -21,7 +21,7 @@ class Type
     list = Array.new
     i = 0
     while i < 18 do
-      if weakness[i] == "2×"
+      if effect[i] == "2×"
         list << Type.find(TYPE_ORDER[i])
       end
       i += 1
@@ -33,7 +33,7 @@ class Type
     list = Array.new
     i = 0
     while i < 18 do
-      if resist[i] == "½×"
+      if effect[i] == "½×"
         list << Type.find(TYPE_ORDER[i])
       end
       i += 1
@@ -45,7 +45,7 @@ class Type
     list = Array.new
     i = 0
     while i < 18 do
-      if resist[i] == "0×"
+      if effect[i] == "0×"
         list << Type.find(TYPE_ORDER[i])
       end
       i += 1

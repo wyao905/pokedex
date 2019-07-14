@@ -8,11 +8,14 @@ class CommandLineInterface
   BASE_PATH = "https://bulbapedia.bulbagarden.net/wiki/"
 
   def run
-    puts "Loading..."
-    
+    puts "Booting Up Pokédex..."
+    puts "Loading Pokémon types..."
     get_type_info
+    
+    puts "Loading Pokémon..."
     get_pokemon_info
     
+    puts "Complete"
     puts "Hello Trainer! Welcome to the Kanto Region."
     puts "I contain information on all of the 151 Kanto Region Pokémon."
     puts "What would you like to do?"
@@ -29,110 +32,92 @@ class CommandLineInterface
       j = 0
       if new_type.name == "Normal"
         while j < 18 do
-          new_type.weakness << list[j * 18]
-          new_type.resist << list[j]
+          new_type.effect << list[j * 18]
           j += 1
         end
       elsif new_type.name == "Fighting"
         while j < 18 do
-          new_type.weakness << list[(j * 18) + 1]
-          new_type.resist << list[j + 18]
+          new_type.effect << list[(j * 18) + 1]
           j += 1
         end
       elsif new_type.name == "Flying"
         while j < 18 do
-          new_type.weakness << list[(j * 18) + 2]
-          new_type.resist << list[j + 36]
+          new_type.effect << list[(j * 18) + 2]
           j += 1
         end
       elsif new_type.name == "Poison"
         while j < 18 do
-          new_type.weakness << list[(j * 18) + 3]
-          new_type.resist << list[j + 54]
+          new_type.effect << list[(j * 18) + 3]
           j += 1
         end
       elsif new_type.name == "Ground"
         while j < 18 do
-          new_type.weakness << list[(j * 18) + 4]
-          new_type.resist << list[j + 72]
+          new_type.effect << list[(j * 18) + 4]
           j += 1
         end
       elsif new_type.name == "Rock"
         while j < 18 do
-          new_type.weakness << list[(j * 18) + 5]
-          new_type.resist << list[j + 90]
+          new_type.effect << list[(j * 18) + 5]
           j += 1
         end
       elsif new_type.name == "Bug"
         while j < 18 do
-          new_type.weakness << list[(j * 18) + 6]
-          new_type.resist << list[j + 108]
+          new_type.effect << list[(j * 18) + 6]
           j += 1
         end
       elsif new_type.name == "Ghost"
         while j < 18 do
-          new_type.weakness << list[(j * 18) + 7]
-          new_type.resist << list[j + 126]
+          new_type.effect << list[(j * 18) + 7]
           j += 1
         end
       elsif new_type.name == "Steel"
         while j < 18 do
-          new_type.weakness << list[(j * 18) + 8]
-          new_type.resist << list[j + 144]
+          new_type.effect << list[(j * 18) + 8]
           j += 1
         end
       elsif new_type.name == "Fire"
         while j < 18 do
-          new_type.weakness << list[(j * 18) + 9]
-          new_type.resist << list[j + 162]
+          new_type.effect << list[(j * 18) + 9]
           j += 1
         end
       elsif new_type.name == "Water"
         while j < 18 do
-          new_type.weakness << list[(j * 18) + 10]
-          new_type.resist << list[j + 180]
+          new_type.effect << list[(j * 18) + 10]
           j += 1
         end
       elsif new_type.name == "Grass"
         while j < 18 do
-          new_type.weakness << list[(j * 18) + 11]
-          new_type.resist << list[j + 198]
+          new_type.effect << list[(j * 18) + 11]
           j += 1
         end
       elsif new_type.name == "Electric"
         while j < 18 do
-          new_type.weakness << list[(j * 18) + 12]
-          new_type.resist << list[j + 216]
+          new_type.effect << list[(j * 18) + 12]
           j += 1
         end
       elsif new_type.name == "Psychic"
         while j < 18 do
-          new_type.weakness << list[(j * 18) + 13]
-          new_type.resist << list[j + 234]
+          new_type.effect << list[(j * 18) + 13]
           j += 1
         end
       elsif new_type.name == "Ice"
         while j < 18 do
-          new_type.weakness << list[(j * 18) + 14]
-          new_type.resist << list[j + 252]
+          new_type.effect << list[(j * 18) + 14]
           j += 1
         end
       elsif new_type.name == "Dragon"
         while j < 18 do
-          new_type.weakness << list[(j * 18) + 15]
-          new_type.resist << list[j + 270]
+          new_type.effect << list[(j * 18) + 15]
           j += 1
         end
       elsif new_type.name == "Dark"
         while j < 18 do
-          new_type.weakness << list[(j * 18) + 16]
-          new_type.resist << list[j + 288]
+          new_type.effect << list[(j * 18) + 16]
           j += 1
         end
       else
         while j < 18 do
-          new_type.weakness << list[(j * 18) + 17]
-          new_type.resist << list[j + 306]
+          new_type.effect << list[(j * 18) + 17]
           j += 1
         end
       end
