@@ -192,12 +192,21 @@ class CommandLineInterface
     start
   end
   
-  def select_poke(method)
+  def select_poke(method, type = nil)
     if method == "name"
       puts "Please enter the name of the Pokémon you wish to look up."
       input = gets.strip.downcase
       selected_poke = Pokemon.find_by_name(input)
       while selected_poke == nil do
+        puts "Could not find the Pokémon, please try again."
+        input = gets.strip.downcase
+        selected_poke = Pokemon.find_by_name(input)
+      end
+    elsif method == "name_by_type"
+      puts "Please enter the name of the Pokémon you wish to look up."
+      input = gets.strip.downcase
+      selected_poke = Pokemon.find_by_name(input)
+      while selected_poke == nil || !type.pokemon.include?(selected_poke) do
         puts "Could not find the Pokémon, please try again."
         input = gets.strip.downcase
         selected_poke = Pokemon.find_by_name(input)
@@ -253,8 +262,13 @@ class CommandLineInterface
           type_input = gets.strip.downcase
           selected_type = Type.find(type_input)
         end
-        selected_type.list
-        select_poke("name")
+        if selected_type.pokemon.size > 0
+          puts "Here is a list of #{selected_type.name} type Pokémon."
+          selected_type.list
+          select_poke("name_by_type", selected_type)
+        else
+          puts "There are no Pokémon of this type in Kanto, please try again."
+        end
       elsif input != 4
         puts "Invalid choice, please select again."
         menu_message(2)
