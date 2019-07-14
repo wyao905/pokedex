@@ -31,6 +31,7 @@ class Type
         list[Type.find(TYPE_ORDER[i])] = 0
       end
     end
+    list
   end
   
   def list
