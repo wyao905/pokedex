@@ -40,7 +40,7 @@ class Pokemon
   def type_effect
     effectiveness = {:super=>[], :very=>[], :neutral=>[], :not=>[], :very_not=>[], :immune=>[]}
     if types.class == Array
-      types[0].show_weakness.each do |type1|      # 4x effectiveness
+      types[0].show_weakness.each do |type1|
         if types[1].show_immune.include?(type1)
           effectiveness[:immune] << type1
         elsif 

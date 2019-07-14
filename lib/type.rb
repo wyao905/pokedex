@@ -18,10 +18,10 @@ class Type
   end
 
   def show_weakness
-    list = Array.new
+    list = Hash.new
     i = 0
     while i < 18 do
-      if effect[i] == "2×"
+      if effect[i] == "2"
         list << Type.find(TYPE_ORDER[i])
       end
       i += 1
@@ -30,10 +30,10 @@ class Type
   end
   
   def show_resistance
-    list = Array.new
+    list = Hash.new
     i = 0
     while i < 18 do
-      if effect[i] == "½×"
+      if effect[i] == "0.5"
         list << Type.find(TYPE_ORDER[i])
       end
       i += 1
@@ -42,16 +42,23 @@ class Type
   end
   
   def show_immune
-    list = Array.new
+    list = Hash.new
     i = 0
     while i < 18 do
-      if effect[i] == "0×"
+      if effect[i] == "0"
         list << Type.find(TYPE_ORDER[i])
       end
       i += 1
     end
     list
   end
+  
+  def show_neutral
+    list = Hash.new
+    i = 0
+    while i < 18 do
+      if effect[i] == "1"
+        list[Type.find(TYPE_ORDER[i])]
   
   def list
     type_list = []

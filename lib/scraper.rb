@@ -25,8 +25,16 @@ class Scraper
     list = page.css("#contentbox #bodyContent #mw-content-text table.roundy tr td").text.split("\n")
     list.pop
     list.delete("")
-    list.map! {|a| a.strip}
+    list.map!{|a| a.strip}
+    list.map!{|a| a.delete("×")}
     list.delete("???")
+    list.map! do |a|
+      if a == "½"
+        a = "0.5"
+      else
+        a
+      end
+    end
     list
   end
   
