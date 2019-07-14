@@ -60,7 +60,7 @@ class Type
   end
   
   def self.find(name)
-    all.detect{|type| type.name.downcase == name}
+    all.detect{|type| type.name.downcase == name.downcase}
   end
   
   def self.create(name)
