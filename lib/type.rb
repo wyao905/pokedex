@@ -54,13 +54,13 @@ class Type
   end
   
   def list
-    list = []
-    pokemon.each {|poke| list << poke.name}
-    list.sort
+    type_list = []
+    pokemon.each {|poke| type_list << poke.name}
+    type_list.sort
   end
   
   def self.find(name)
-    all.detect{|type| type.name == name}
+    all.detect{|type| type.name.downcase == name}
   end
   
   def self.create(name)
