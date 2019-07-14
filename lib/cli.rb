@@ -254,7 +254,7 @@ class CommandLineInterface
           selected_type = Type.find(type_input)
         end
         selected_type.list
-        select_pokemon("name")
+        select_poke("name")
       elsif input != 4
         puts "Invalid choice, please select again."
         menu_message(2)

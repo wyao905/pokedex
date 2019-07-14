@@ -56,7 +56,7 @@ class Type
   def list
     type_list = []
     pokemon.each {|poke| type_list << poke.name}
-    type_list.sort
+    type_list.sort.each {|a| puts a}
   end
   
   def self.find(name)

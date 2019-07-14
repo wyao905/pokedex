@@ -27,7 +27,6 @@ class Pokemon
       type_names.each do |type|
         pokemon_type = Type.find(type)
         list << pokemon_type
-        binding.pry
         pokemon_type.pokemon << self if !pokemon_type.pokemon.include?(self)
       end
       self.types = list
