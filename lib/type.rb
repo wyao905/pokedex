@@ -53,6 +53,12 @@ class Type
     list
   end
   
+  def list
+    list = []
+    pokemon.each {|poke| list << poke.name}
+    list.sort
+  end
+  
   def self.find(name)
     all.detect{|type| type.name == name}
   end

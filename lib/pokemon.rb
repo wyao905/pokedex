@@ -27,13 +27,13 @@ class Pokemon
       type_names.each do |type|
         pokemon_type = Type.find(type)
         list << pokemon_type
-        pokemon_type.pokemon << self if pokemon_type.pokemon !include?(self)
+        pokemon_type.pokemon << self if !pokemon_type.pokemon.include?(self)
       end
       self.types = list
     else
       pokemon_type = Type.find(type_names)
       self.types = pokemon_type
-      pokemon_type.pokemon << self if pokemon_type.pokemon !include?(self)
+      pokemon_type.pokemon << self if !pokemon_type.pokemon.include?(self)
     end
   end
     
