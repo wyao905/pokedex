@@ -227,6 +227,7 @@ class CommandLineInterface
       if input == 1
         pokemon.stats
         menu_message(3)
+        input = gets.strip.to_i
       elsif input == 2
         if pokemon.type_effect[:super].size != 0
           puts "Receives super effective (400%) damage from: #{pokemon.type_effect[:super].join(", ")}"
@@ -247,6 +248,7 @@ class CommandLineInterface
           puts "Immune (0%) to from: #{pokemon.type_effect[:immune].join(", ")}"
         end
         menu_message(3)
+        input = gets.strip.to_i
       elsif input == 3
         # display evo line charmander -> charmeleon -> charizard
       elsif input == 4
@@ -260,14 +262,7 @@ class CommandLineInterface
         puts "Invalid choice, please try again."
         input = gets.strip.to_i
       end
-      input = gets.strip.to_i
     end
-      # puts "---------------------------------------------"
-      # puts "Menu: 1. Stats                5. Next Pokémon"
-      # puts "      2. Type effectiveness   6. Back"
-      # puts "      3. Evolution line       7. Search again"
-      # puts "      4. Previous Pokémon"
-      # puts "---------------------------------------------"
   end
   
   def find(input)
