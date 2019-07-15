@@ -228,8 +228,25 @@ class CommandLineInterface
         pokemon.stats
         menu_message(3)
       elsif input == 2
-        puts pokemon.type
-        # display weak to, resist, immune lists
+        if pokemon.type_effect[:super].size != 0
+          puts "Receives super effective (400%) damage from: #{pokemon.type_effect[:super].join(", ")}"
+        end
+        if pokemon.type_effect[:very].size != 0
+          puts "Receives very effective (200%) damage from: #{pokemon.type_effect[:very].join(", ")}"
+        end
+        if pokemon.type_effect[:neutral].size != 0
+          puts "Receives neutral (100%) damage from: #{pokemon.type_effect[:neutral].join(", ")}"
+        end
+        if pokemon.type_effect[:not].size != 0
+          puts "Receives not effective (50%) damage from: #{pokemon.type_effect[:not].join(", ")}"
+        end
+        if pokemon.type_effect[:resist].size != 0
+          puts "Receives resisted (25%) damage from: #{pokemon.type_effect[:resist].join(", ")}"
+        end
+        if pokemon.type_effect[:immune].size != 0
+          puts "Immune (0%) to from: #{pokemon.type_effect[:immune].join(", ")}"
+        end
+        menu_message(3)
       elsif input == 3
         # display evo line charmander -> charmeleon -> charizard
       elsif input == 4
@@ -237,11 +254,13 @@ class CommandLineInterface
       elsif input == 5
         # call same function to display next pokemon info
       elsif input == 7
-        # call start function
+        puts "What would you like to do?"
+        start
       elsif input != 6
         puts "Invalid choice, please try again."
         input = gets.strip.to_i
       end
+      input = gets.strip.to_i
     end
       # puts "---------------------------------------------"
       # puts "Menu: 1. Stats                5. Next Pokémon"
