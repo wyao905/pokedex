@@ -41,21 +41,18 @@ class Pokemon
     effectiveness = {:super=>[], :very=>[], :neutral=>[], :not=>[], :resist=>[], :immune=>[]}
     if types.class == Array
       types[0].show_effect.each do |type1, value1|
-        types[1].show_effect.each do |type2, value2|
-          binding.pry
-          if value1.to_f * value2.to_f == 4
-            effectiveness[:super] << type1
-          elsif value1.to_f * value2.to_f == 2
-            effectiveness[:very] << type1
-          elsif value1.to_f * value2.to_f == 1
-            effectiveness[:neutral] << type1
-          elsif value1.to_f * value2.to_f == 0.5
-            effectiveness[:not] << type1
-          elsif value1.to_f * value2.to_f == 0.25
-            effectiveness[:resist] << type1
-          else
-            effectiveness[:immune] << type1
-          end
+        if value1.to_f * types[1].show_effect[type1].to_f == 4
+          effectiveness[:super] << type1
+        elsif value1.to_f * types[1].show_effect[type1].to_f == 2
+          effectiveness[:very] << type1
+        elsif value1.to_f * types[1].show_effect[type1].to_f == 1
+          effectiveness[:neutral] << type1
+        elsif value1.to_f * types[1].show_effect[type1].to_f == 0.5
+          effectiveness[:not] << type1
+        elsif value1.to_f * types[1].show_effect[type1].to_f == 0.25
+          effectiveness[:resist] << type1
+        else
+          effectiveness[:immune] << type1
         end
       end
     else
