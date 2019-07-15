@@ -270,9 +270,17 @@ class CommandLineInterface
       elsif input == 3
         # display evo line charmander -> charmeleon -> charizard
       elsif input == 4
-        # call same function to display previous pokemon info
+        if pokemon.number == "001"
+          display(Pokemon.find_by_num(151))
+        else
+          display(Pokemon.find_by_num(pokemon.number.to_i - 1))
+        end
       elsif input == 5
-        # call same function to display next pokemon info
+        if pokemon.number == "151"
+          display(Pokemon.find_by_num(1))
+        else
+          display(Pokemon.find_by_num(pokemon.number.to_i + 1))
+        end
       elsif input == 7
         puts "What would you like to do?"
         start
