@@ -281,14 +281,13 @@ class CommandLineInterface
         else
           display(Pokemon.find_by_num(pokemon.number.to_i + 1))
         end
-      elsif input == 7
-        puts "What would you like to do?"
-        start
-      elsif input != 6
+      else
         puts "Invalid choice, please try again."
         input = gets.strip.to_i
       end
     end
+    puts "What would you like to do?"
+    start
   end
   
   def find(input)
@@ -343,8 +342,8 @@ class CommandLineInterface
     elsif input == 3
       puts "---------------------------------------------"
       puts "Menu: 1. Stats                5. Next Pokémon"
-      puts "      2. Type effectiveness   6. Back"
-      puts "      3. Evolution line       7. New search"
+      puts "      2. Type effectiveness   6. New Search"
+      puts "      3. Evolution line"
       puts "      4. Previous Pokémon"
       puts "---------------------------------------------"
     else
