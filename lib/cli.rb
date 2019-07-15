@@ -230,22 +230,34 @@ class CommandLineInterface
         input = gets.strip.to_i
       elsif input == 2
         if pokemon.type_effect[:super].size != 0
-          puts "Receives super effective (400%) damage from: #{pokemon.type_effect[:super].join(", ")}"
+          type_name = []
+          pokemon.type_effect[:super].each{|a| type_name << a.name}
+          puts "Receives super effective damage (400% damage) from: #{type_name.join(", ")}"
         end
         if pokemon.type_effect[:very].size != 0
-          puts "Receives very effective (200%) damage from: #{pokemon.type_effect[:very].join(", ")}"
+          type_name = []
+          pokemon.type_effect[:very].each{|a| type_name << a.name}
+          puts "Receives very effective damage (200% damage) from: #{type_name.join(", ")}"
         end
         if pokemon.type_effect[:neutral].size != 0
-          puts "Receives neutral (100%) damage from: #{pokemon.type_effect[:neutral].join(", ")}"
+          type_name = []
+          pokemon.type_effect[:neutral].each{|a| type_name << a.name}
+          puts "Receives neutral damage (100% damage) from: #{type_name.join(", ")}"
         end
         if pokemon.type_effect[:not].size != 0
-          puts "Receives not effective (50%) damage from: #{pokemon.type_effect[:not].join(", ")}"
+          type_name = []
+          pokemon.type_effect[:not].each{|a| type_name << a.name}
+          puts "Receives not effective damage (50% damage) from: #{type_name.join(", ")}"
         end
         if pokemon.type_effect[:resist].size != 0
-          puts "Receives resisted (25%) damage from: #{pokemon.type_effect[:resist].join(", ")}"
+          type_name = []
+          pokemon.type_effect[:resist].each{|a| type_name << a.name}
+          puts "Receives resisted damage (25% damage) from: #{type_name.join(", ")}"
         end
         if pokemon.type_effect[:immune].size != 0
-          puts "Immune (0%) to from: #{pokemon.type_effect[:immune].join(", ")}"
+          type_name = []
+          pokemon.type_effect[:immune].each{|a| type_name << a.name}
+          puts "Immune (0% damage) to from: #{type_name.join(", ")}"
         end
         menu_message(3)
         input = gets.strip.to_i
