@@ -42,6 +42,7 @@ class Pokemon
     if types.class == Array
       types[0].show_effect.each do |type1, value1|
         types[1].show_effect.each do |type2, value2|
+          binding.pry
           if value1.to_f * value2.to_f == 4
             effectiveness[:super] << type1
           elsif value1.to_f * value2.to_f == 2
