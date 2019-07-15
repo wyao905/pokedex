@@ -57,11 +57,12 @@ class Pokemon
       end
     else
       types.show_effect.each do |type, value|
-        if value == "2"
+        binding.pry
+        if value == 2
           effectiveness[:very] << type
-        elsif value == "1"
+        elsif value == 1
           effectiveness[:neutral] << type
-        elsif value == "0.5"
+        elsif value == 0.5
           effectiveness[:not] << type
         else
           effectiveness[:immune] << type
