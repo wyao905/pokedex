@@ -271,13 +271,13 @@ class CommandLineInterface
         # display evo line charmander -> charmeleon -> charizard
       elsif input == 4
         if pokemon == Pokemon.all.first
-          display(Pokemon.find_by_num(Pokemon.all.size))
+          display(Pokemon.all.last)
         else
           display(Pokemon.find_by_num(pokemon.number.to_i - 1))
         end
       elsif input == 5
         if pokemon == Pokemon.all.last
-          display(Pokemon.find_by_num(1))
+          display(Pokemon.all.first)
         else
           display(Pokemon.find_by_num(pokemon.number.to_i + 1))
         end
