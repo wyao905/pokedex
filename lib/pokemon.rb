@@ -57,7 +57,6 @@ class Pokemon
       end
     else
       types.show_effect.each do |type, value|
-        binding.pry
         if value == 2
           effectiveness[:very] << type
         elsif value == 1
