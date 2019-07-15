@@ -1,4 +1,4 @@
-firerequire_relative "../lib/pokemon.rb"
+require_relative "../lib/pokemon.rb"
 require_relative "../lib/scraper.rb"
 require_relative "../lib/type.rb"
 require 'nokogiri'

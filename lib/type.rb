@@ -15,6 +15,7 @@ class Type
     @pokemon = []
     @weakness = []
     @resist = []
+    @effect = []
   end
 
   def show_effect
