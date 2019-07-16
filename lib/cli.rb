@@ -225,7 +225,7 @@ class CommandLineInterface
     input = gets.strip.to_i
     while input != 5 do
       if input == 1
-        puts "HP:".ljust(9) + pokemon.stats[:HP]}.ljust(5) + "Special Attack:".ljust(17) + pokemon.stats[:Special_Attack]
+        puts "HP:".ljust(9) + pokemon.stats[:HP].ljust(5) + "Special Attack:".ljust(17) + pokemon.stats[:Special_Attack]
         puts "Attack:".ljust(9) + pokemon.stats[:Attack].ljust(5) + "Special Defense:".ljust(17) + pokemon.stats[:Special_Defense]
         puts "Defense:".ljust(9) + pokemon.stats[:Defense].ljust(5) + "Speed:".ljust(17) + pokemon.stats[:Speed]
         menu_message(3)
