@@ -40,6 +40,7 @@ class Scraper
   
   def self.scrape_page(pokemon_url) #scrapes the necessary pokedex info to be displayed for a single pokemon only
     page = Nokogiri::HTML(open(pokemon_url))
+    evo_page = Nokogiri::HTML(open())
     
     test_type = page.css("table.roundy td.roundy table.roundy table a span b")
     if test_type[1].text.strip != "Unknown"
@@ -62,6 +63,8 @@ class Scraper
              :Special_Attack => scraped_stats[3],
              :Special_Defense => scraped_stats[4],
              :Speed => scraped_stats[5]}
+             
+    scraped_evo = 
     
     pokemon_entry_hash = {:name => page.css(".roundy big b").text.strip,
                           :number => page.css("#mw-content-text table.roundy table.roundy th.roundy big big a span").text.delete("#"),
@@ -71,7 +74,6 @@ class Scraper
                           :weight => weight,
                           :height => height,
                           :stats => stats,
-                          :evolution => "yes",
                           :gender => page.css("#bodyContent #mw-content-text table.roundy")[5].text.strip.split("\n").pop().strip}
   end
 end

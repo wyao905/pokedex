@@ -223,7 +223,7 @@ class CommandLineInterface
     puts "Gender Ratio: #{pokemon.gender}"
     menu_message(3)
     input = gets.strip.to_i
-    while input != 6 do
+    while input != 5 do
       if input == 1
         pokemon.stats
         menu_message(3)
@@ -268,14 +268,12 @@ class CommandLineInterface
         menu_message(3)
         input = gets.strip.to_i
       elsif input == 3
-        # display evo line charmander -> charmeleon -> charizard
-      elsif input == 4
         if pokemon == Pokemon.all.first
           display(Pokemon.all.last)
         else
           display(Pokemon.find_by_num(pokemon.number.to_i - 1))
         end
-      elsif input == 5
+      elsif input == 4
         if pokemon == Pokemon.all.last
           display(Pokemon.all.first)
         else
@@ -341,10 +339,9 @@ class CommandLineInterface
       puts "-----------------------"
     elsif input == 3
       puts "---------------------------------------------"
-      puts "Menu: 1. Stats                5. Next Pokémon"
-      puts "      2. Type effectiveness   6. New Search"
-      puts "      3. Evolution line"
-      puts "      4. Previous Pokémon"
+      puts "Menu: 1. Stats                4. Next Pokémon"
+      puts "      2. Type effectiveness   5. New Search"
+      puts "      3. Previous Pokémon"
       puts "---------------------------------------------"
     else
       puts "--------------------------------"

@@ -10,7 +10,6 @@ class Pokemon
                 :weight,        #returns a float in lbs
                 :height,        #returns a float in inches
                 :stats,         #hash of 6 stats {:hp, :attack, :defense, :special_atk, :special_def, :speed}
-                :evolution,     #only scrape for after, pre-evo will be retroactively added from previous form
                 :gender,        #ratio split m/f
                 :types          #actual type object
 
