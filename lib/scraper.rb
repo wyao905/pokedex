@@ -40,7 +40,6 @@ class Scraper
   
   def self.scrape_page(pokemon_url) #scrapes the necessary pokedex info to be displayed for a single pokemon only
     page = Nokogiri::HTML(open(pokemon_url))
-    evo_page = Nokogiri::HTML(open())
     
     test_type = page.css("table.roundy td.roundy table.roundy table a span b")
     if test_type[1].text.strip != "Unknown"
