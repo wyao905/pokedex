@@ -1,28 +1,16 @@
 # Pokedex
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/pokedex`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Welcome to the Kanto Pokédex! Here you can look up the basic information for the first 151 Pokémon. The commands to navigate the program will be through numerical inputs as indicated in the menus that pop up (unless you are prompted to input the name of the Pokémon or a Type). Please note that the program is scraping over 150 different webpages at the start and will require about 5 - 10 min to load.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'pokedex'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install pokedex
+1. Clone this repo
+2. run 'cd pokedex'
+3. run 'bundle install'
 
 ## Usage
 
-TODO: Write usage instructions here
+To run the application, run 'ruby ./bin/pokedex'
 
 ## Development
 
