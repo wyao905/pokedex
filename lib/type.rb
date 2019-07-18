@@ -13,8 +13,6 @@ class Type
   def initialize(name)
     @name = name
     @pokemon = []
-    @weakness = []
-    @resist = []
     @effect = []
   end
 
